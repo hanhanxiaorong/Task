@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ow.tracer.admin.account.mapper.UserMapper">
+
+    <sql id="Base_Column_List">
+		`id`,
+		`user_name`,
+		'nick_name',
+		`password`,
+		`nick_name`,
+		`version_number`,
+		`create_date`,
+		`create_by`,
+		`update_by`,
+		`update_date`,
+		`tenan_id`,
+		`enabled`,
+		`avatar`,
+		`salt`,
+		`del_flag`
+
+	</sql>
+    <!-- userVo结果集 -->
+    <resultMap id="userVoResultMap" type="com.ow.tracer.core.vo.UserVO">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="nick_name" property="nickName"/>
+		<result column="phone" property="phone" />
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="phone" property="phone"/>
+        <result column="avatar" property="avatar"/>
+        <result column="ucreate_time" property="createTime"/>
+        <result column="uupdate_time" property="updateTime"/>
+        <result column="udel_flag" property="delFlag"/>
+        <result column="deptId" property="deptId"/>
+        <result column="deptName" property="deptName"/>
+        <collection property="roleList" ofType="com.ow.tracer.core.vo.AdminRole">
+            <id column="id" property="id"/>
+            <result column="role_name" property="roleName"/>
+            <result column="role_code" property="roleCode"/>
+            <result column="role_desc" property="roleDesc"/>
+            <result column="rcreate_time" property="createTime"/>
+            <result column="rupdate_time" property="updateTime"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectPageVo" resultMap="userVoResultMap">
+		SELECT
+		`user`.id,
+		`user`.user_name,
+		`user`.nick_name,
+		`user`.`password`,
+		`user`.`phone`,
+		`user`.salt,
+		`user`.avatar,
+		`user`.create_date AS ucreate_time,
+		`user`.update_date AS uupdate_time,
+		`user`.del_flag AS udel_flag,
+		`user`.dept_id AS deptId,
+		r.id,
+		r.role_name,
+		r.role_code,
+		r.role_desc,
+		r.create_date AS rcreate_time,
+		r.update_date AS rupdate_time
+		FROM
+		admin_user  AS `user`
+		LEFT JOIN admin_user_role AS ur ON ur.user_id = `user`.id
+		LEFT JOIN admin_role AS r ON r.id  = ur.role_id
+		WHERE
+		r.del_flag = 0
+
+		ORDER BY `user`.create_date DESC
+	</select>
+</mapper>
