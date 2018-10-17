@@ -1,5 +1,6 @@
 package com.ow.tracer.admin.account.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,7 +27,8 @@ public class User extends BaseDTO <User>{
     public String avatar;
     public String salt;
     public String delFlag;
-
+    @TableField(exist = false)
+    public String  [] roleStr;
 
     public String getUserName() {
         return userName;
@@ -86,5 +88,13 @@ public class User extends BaseDTO <User>{
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String[] getRoleStr() {
+        return roleStr;
+    }
+
+    public void setRoleStr(String[] roleStr) {
+        this.roleStr = roleStr;
     }
 }

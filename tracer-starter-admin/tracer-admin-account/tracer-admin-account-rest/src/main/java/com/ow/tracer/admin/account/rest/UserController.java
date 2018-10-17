@@ -64,8 +64,10 @@ public class UserController extends BaseController {
         return "order id : " + 12;
     }
     @GetMapping(value="/allUser")
-    public Result allUser(Integer pages,Integer total){
+    public Result allUser(Integer current){
         Page page = new Page();
+        page.setCurrent(current);
+        page.setSize(20);
         IPage<UserVO> userVOIPage = iUserService.selectUserPage(page);
         return Results.successWithData(userVOIPage, BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }

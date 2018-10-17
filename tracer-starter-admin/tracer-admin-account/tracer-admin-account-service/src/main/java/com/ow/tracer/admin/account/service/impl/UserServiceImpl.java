@@ -9,8 +9,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.admin.account.dto.Role;
 import com.ow.tracer.admin.account.dto.User;
 import com.ow.tracer.admin.account.dto.UserInfo;
+import com.ow.tracer.admin.account.dto.UserRole;
 import com.ow.tracer.admin.account.mapper.UserMapper;
 import com.ow.tracer.admin.account.service.IMenuService;
+import com.ow.tracer.admin.account.service.IRoleService;
+import com.ow.tracer.admin.account.service.IUserRoleService;
 import com.ow.tracer.admin.account.service.IUserService;
 import com.ow.tracer.core.constats.SecurityConstants;
 import com.ow.tracer.core.vo.AdminRole;
@@ -34,6 +37,10 @@ import java.util.Set;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     @Autowired
     private IMenuService menuService;
+    @Autowired
+    private IUserRoleService userRoleService;
+    @Autowired
+    private IRoleService roleService;
     @Override
     public UserInfo getUserInfo(UserVO userVO) {
         User usertion = new User();
@@ -69,8 +76,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public IPage<UserVO> selectUserPage(Page<UserVO> page) {
-        return         this.baseMapper.selectPageVo(page);
+    public IPage<User> selectUserPage(Page<User> page) {
+        IPage<User> iPage = this.baseMapper.selectPage(page,null);
+        for(User user :iPage.getRecords()){
+
+            QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("user_id",user.getId());
+           List<UserRole> userRoles = userRoleService.list(queryWrapper);
+            String[] roleStr = new String[userRoles.size()];
+           int i=0;
+           for(UserRole userRole:userRoles){
+                    Role role = roleService.getById(userRole.getRoleId());
+                    System.out.println(role.getRoleName());
+                    roleStr[i]=role.getRoleName() ;
+                    i++;
+           }
+            user.setRoleStr(roleStr);
+        }
+        return iPage;
 
     }
 }
