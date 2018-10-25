@@ -3,7 +3,7 @@ package com.ow.tracer.admin.account.dto;
 import java.io.Serializable;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 21:00
  * @Description:
  */

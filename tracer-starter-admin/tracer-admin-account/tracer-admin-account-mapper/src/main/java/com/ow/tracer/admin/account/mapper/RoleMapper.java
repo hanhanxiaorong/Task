@@ -5,7 +5,7 @@ import com.ow.tracer.admin.account.dto.Role;
 import com.ow.tracer.core.base.Mapper;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-10-16 23:45
  * @Description:
  */

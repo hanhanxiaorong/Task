@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-7 17:46
  * @Description:
  */

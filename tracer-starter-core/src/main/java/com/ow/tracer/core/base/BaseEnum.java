@@ -1,7 +1,7 @@
 package com.ow.tracer.core.base;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 01:41
  * @Description:基础枚举接口
  */

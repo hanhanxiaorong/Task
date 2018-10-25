@@ -12,9 +12,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author: 594781919@qq.com
+ * @author: easy
  * @review:
- * @date: 2018/8/24
+ * @date: 2018/10/10
  */
 @Aspect
 @Component

@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ow.tracer.core.base.BaseDTO;
 import com.ow.tracer.core.util.Dates;
 
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-7 22:30
  * @Description:
  */
@@ -27,9 +28,13 @@ public class User extends BaseDTO <User>{
     public String avatar;
     public String salt;
     public String delFlag;
+    public String deptId;
+    public String phone;
+    @TableField(exist = false)
+    public String   deptName;
+
     @TableField(exist = false)
     public String  [] roleStr;
-
     public String getUserName() {
         return userName;
     }
@@ -96,5 +101,29 @@ public class User extends BaseDTO <User>{
 
     public void setRoleStr(String[] roleStr) {
         this.roleStr = roleStr;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public String getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -27,12 +27,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -40,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-12 23:00
  * @Description:
  */
@@ -149,7 +147,7 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        PigJwtAccessTokenConverter jwtAccessTokenConverter = new PigJwtAccessTokenConverter();
+        TracerJwtAccessTokenConverter jwtAccessTokenConverter = new TracerJwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(CommonConstant.SIGN_KEY);
         return jwtAccessTokenConverter;
     }
@@ -157,13 +155,13 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
      * tokenstore 定制化处理
      *
      * @return TokenStore
-     * 1. 如果使用的 redis-cluster 模式请使用 PigRedisTokenStore
-     * PigRedisTokenStore tokenStore = new PigRedisTokenStore();
+     * 1. 如果使用的 redis-cluster 模式请使用 TracerRedisTokenStore
+     * TracerRedisTokenStore tokenStore = new TracerRedisTokenStore();
      * tokenStore.setRedisTemplate(redisTemplate);
      */
     @Bean
     public TokenStore redisTokenStore() {
-        PigRedisTokenStore tokenStore = new PigRedisTokenStore(redisConnectionFactory);
+        TracerRedisTokenStore tokenStore = new TracerRedisTokenStore(redisConnectionFactory);
         tokenStore.setPrefix(SecurityConstants.PIG_PREFIX);
         return tokenStore;
     }

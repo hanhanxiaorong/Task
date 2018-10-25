@@ -3,7 +3,7 @@ package com.ow.tracer.core.base;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 17:45
  * @Description:通用Service，可以自定义服务
  */

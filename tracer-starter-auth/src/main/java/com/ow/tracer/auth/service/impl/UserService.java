@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-21 22:37
  * @Description:
  */

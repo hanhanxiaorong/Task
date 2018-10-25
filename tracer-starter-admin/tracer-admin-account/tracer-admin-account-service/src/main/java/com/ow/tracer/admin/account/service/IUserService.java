@@ -9,7 +9,7 @@ import com.ow.tracer.core.base.BaseService;
 import com.ow.tracer.core.vo.UserVO;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-10 21:53
  * @Description:
  */

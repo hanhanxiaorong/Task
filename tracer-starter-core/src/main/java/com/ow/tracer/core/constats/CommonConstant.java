@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2018-2025, lengleng All rights reserved.
+ *    Copyright (c) 2018-2025, easy All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -12,14 +12,14 @@
  * Neither the name of the pig4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
- * Author: lengleng (wangiegie@gmail.com)
+ * Author: easy (wangiegie@gmail.com)
  */
 
 package com.ow.tracer.core.constats;
 
 /**
- * @author lengleng
- * @date 2017/10/29
+ * @author easy
+ * @date 2018/09/28
  */
 public interface CommonConstant {
     /**

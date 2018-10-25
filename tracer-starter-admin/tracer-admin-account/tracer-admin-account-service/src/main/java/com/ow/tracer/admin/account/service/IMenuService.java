@@ -7,7 +7,7 @@ import com.ow.tracer.core.vo.MenuVO;
 import java.util.List;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 21:46
  * @Description:
  */

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-21 19:29
  * @Description:
  */

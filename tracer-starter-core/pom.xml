@@ -32,6 +32,7 @@
         <guava.version>23.0</guava.version>
         <mysql.connector.version>8.0.12</mysql.connector.version>
         <mp.version>3.0-RC1</mp.version>
+        <beetl.version>2.7.26</beetl.version>
 
     </properties>
 
@@ -170,6 +171,12 @@
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>${beetl.version}</version>
         </dependency>
     </dependencies>
 

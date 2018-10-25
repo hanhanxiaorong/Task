@@ -1,7 +1,7 @@
 package com.ow.tracer.core.exception;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 17:22
  * @Description:基础异常类
  */

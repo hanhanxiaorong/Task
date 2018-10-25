@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurity
 
 /**
  * @author: 594781919@qq.com
- * @date: 2018/4/10
+ * @date: 2018/10/10
  */
 @Configuration
 @EnableResourceServer
@@ -23,7 +23,7 @@ public class SecurityConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/user/**")
+                .antMatchers("/admin/**")
                 .authenticated();
     }
     /**

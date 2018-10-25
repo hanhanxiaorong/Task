@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 23:52
  * @Description:
  */

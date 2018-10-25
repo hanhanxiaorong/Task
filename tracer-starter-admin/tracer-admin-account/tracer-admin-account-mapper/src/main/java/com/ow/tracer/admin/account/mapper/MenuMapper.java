@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 21:47
  * @Description:
  */

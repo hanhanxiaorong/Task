@@ -2,6 +2,7 @@ package com.ow.tracer.core.base;
 
 import cn.hutool.core.date.DateUtil;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 17:04
  * @Description:基础实体类
  */
@@ -36,7 +37,7 @@ public class BaseDTO <T extends Model> extends Model<T> {
     /**
      * 主键ID , 这里故意演示注解可以无
      */
-    @TableId("id")
+    @TableId(value = "id",type = IdType.UUID)
     private String id;
     /**
      * 操作类型，add/update/delete 参考：{@link Constants.Operation}
@@ -77,7 +78,7 @@ public class BaseDTO <T extends Model> extends Model<T> {
      * 更新人用户名
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long updateBy;
+    private String updateBy;
     /**
      * 更新人名称
      */
@@ -150,11 +151,11 @@ public class BaseDTO <T extends Model> extends Model<T> {
         this.createDate = createDate;
     }
 
-    public Long getUpdateBy() {
+    public String getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(Long updateBy) {
+    public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }
 

@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-7 01:13
  * @Description:文件生成页面
  */
@@ -21,7 +21,7 @@ public class FileGeneration {
 
     private static final String groupId = "com.ow";
 
-    private static final String artifactId = "heaven-ucenter";
+    private static final String artifactId = "tracer-admin-shop";
     /**
      * 源模板文件基础路径
      */
@@ -35,7 +35,10 @@ public class FileGeneration {
         FileGeneration fileGeneration = new FileGeneration();
         fileGeneration.createFile(sourceBasePath);
     }
-
+    public static   void CreateFIle() {
+        FileGeneration fileGeneration = new FileGeneration();
+        fileGeneration.createFile(sourceBasePath);
+    }
     /**
      * 功能描述:
      *

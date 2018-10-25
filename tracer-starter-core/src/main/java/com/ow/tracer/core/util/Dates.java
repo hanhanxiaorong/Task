@@ -1,7 +1,7 @@
 package com.ow.tracer.core.util;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 17:40
  * @Description:
  */

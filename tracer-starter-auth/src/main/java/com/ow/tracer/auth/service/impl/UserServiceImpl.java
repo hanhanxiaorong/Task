@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-21 22:38
  * @Description:
  */

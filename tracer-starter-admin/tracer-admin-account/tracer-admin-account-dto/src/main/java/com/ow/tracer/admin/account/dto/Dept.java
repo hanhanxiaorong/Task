@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2018-2025, lengleng All rights reserved.
+ *    Copyright (c) 2018-2025, easy All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -12,7 +12,7 @@
  * Neither the name of the pig4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
- * Author: lengleng (wangiegie@gmail.com)
+ * Author: easy (wangiegie@gmail.com)
  */
 
 package com.ow.tracer.admin.account.dto;
@@ -30,7 +30,7 @@ import java.util.Date;
  * 部门管理
  * </p>
  *
- * @author lengleng
+ * @author easy
  * @since 2018-01-22
  */
 @TableName("admin_dept")
@@ -38,10 +38,6 @@ public class Dept extends BaseDTO<Dept> {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer deptId;
-    /**
-     * 部门名称
-     */
     private String name;
     /**
      * 排序
@@ -53,15 +49,7 @@ public class Dept extends BaseDTO<Dept> {
      */
     private String delFlag;
 
-    private Integer parentId;
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
+    private String parentId;
 
     public String getName() {
         return name;
@@ -87,25 +75,20 @@ public class Dept extends BaseDTO<Dept> {
         this.delFlag = delFlag;
     }
 
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.deptId;
+
+    public String getParentId() {
+        return parentId;
     }
 
     @Override
     public String toString() {
         return "Dept{" +
-                ", deptId=" + deptId +
+                ", id=" + this.getId() +
                 ", name=" + name +
-
                 ", delFlag=" + delFlag +
                 "}";
     }

@@ -1,14 +1,17 @@
 package com.ow.tracer.admin.account.dto;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.ow.tracer.core.base.BaseDTO;
 
 import java.io.Serializable;
 
 /**
- * @Auther: Easy
+ * @author : Easy
  * @Date: 18-9-25 21:29
  * @Description:
  */
+@TableName("admin_dept_relation")
+
 public class DeptRelation extends BaseDTO<DeptRelation> {
 
     private static final long serialVersionUID = 1L;
@@ -16,11 +19,11 @@ public class DeptRelation extends BaseDTO<DeptRelation> {
     /**
      * 祖先节点
      */
-    private Integer ancestor;
+    private String ancestor;
     /**
      * 后代节点
      */
-    private Integer descendant;
+    private String descendant;
 
 
     @Override
@@ -36,19 +39,19 @@ public class DeptRelation extends BaseDTO<DeptRelation> {
                 "}";
     }
 
-    public Integer getAncestor() {
+    public String getAncestor() {
         return ancestor;
     }
 
-    public void setAncestor(Integer ancestor) {
+    public void setAncestor(String ancestor) {
         this.ancestor = ancestor;
     }
 
-    public Integer getDescendant() {
+    public String getDescendant() {
         return descendant;
     }
 
-    public void setDescendant(Integer descendant) {
+    public void setDescendant(String descendant) {
         this.descendant = descendant;
     }
 }

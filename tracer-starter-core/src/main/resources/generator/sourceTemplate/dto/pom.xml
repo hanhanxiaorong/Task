@@ -8,9 +8,9 @@
     <version>${artifactId-parent}</version>
   </parent>
 
-  <artifactId>${artifactId}-model</artifactId>
-  <version>${artifactId-model}</version>
-  <name>${artifactId}-model</name>
+  <artifactId>${artifactId}-dto</artifactId>
+  <version>${artifactId-dto}</version>
+  <name>${artifactId}-dto</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

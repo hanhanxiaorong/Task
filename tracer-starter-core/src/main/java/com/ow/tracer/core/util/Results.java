@@ -4,7 +4,7 @@ import com.ow.tracer.core.base.Result;
 import org.omg.CORBA.INTERNAL;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 01:20
  * @Description:Result生成工具类
  */

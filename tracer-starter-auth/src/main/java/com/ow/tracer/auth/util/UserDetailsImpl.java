@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-21 22:33
  * @Description:
  */

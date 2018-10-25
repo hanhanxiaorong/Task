@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-13 00:43
  * @Description:
  */

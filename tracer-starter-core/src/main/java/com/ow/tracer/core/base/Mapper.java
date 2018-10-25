@@ -3,7 +3,7 @@ package com.ow.tracer.core.base;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-10 21:09
  * @Description:继承通用Mapper，并可以自定义自己的基础mapper
  */

@@ -9,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.List;
 
 /**
- * @author lengleng
- * @date 2017/12/21
+ * @author easy
+ * @date 2018/09/28
  * mvc配置
  */
 @Configuration

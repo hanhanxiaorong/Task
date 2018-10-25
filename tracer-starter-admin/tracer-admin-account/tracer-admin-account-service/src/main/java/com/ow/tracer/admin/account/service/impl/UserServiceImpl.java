@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-10 21:56
  * @Description:
  */
@@ -77,9 +77,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public IPage<User> selectUserPage(Page<User> page) {
-        IPage<User> iPage = this.baseMapper.selectPage(page,null);
+        IPage<User> iPage = this.baseMapper.selectPageVo(page);
         for(User user :iPage.getRecords()){
-
             QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("user_id",user.getId());
            List<UserRole> userRoles = userRoleService.list(queryWrapper);
@@ -94,6 +93,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             user.setRoleStr(roleStr);
         }
         return iPage;
-
     }
 }

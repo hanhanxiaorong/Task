@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-13 17:30
  * @Description:
  */
 /**
- * @author lengleng
- * @date 2017/10/29
+ * @author easy
+ * @date 2018/09/28
  */
 @TableName("admin_user")
 

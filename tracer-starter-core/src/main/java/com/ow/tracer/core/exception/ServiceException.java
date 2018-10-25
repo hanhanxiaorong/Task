@@ -1,7 +1,7 @@
 package com.ow.tracer.core.exception;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 17:31
  * @Description:Service层异常
  */

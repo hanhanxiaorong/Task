@@ -7,7 +7,7 @@ import com.ow.tracer.core.base.Mapper;
 import com.ow.tracer.core.vo.UserVO;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-10 21:57
  * @Description:
  */
@@ -21,6 +21,6 @@ public interface UserMapper extends Mapper<User> {
      * @param page 分页对象,xml中可以从里面进行取值,传递参数 Page 即自动分页,必须放在第一位(你可以继承Page实现自己的分页对象)
      * @return 分页对象
      */
-    IPage<UserVO> selectPageVo(Page page);
+    IPage<User> selectPageVo(Page page);
 
 }

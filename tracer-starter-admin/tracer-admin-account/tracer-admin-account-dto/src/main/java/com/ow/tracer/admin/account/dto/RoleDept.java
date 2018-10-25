@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ow.tracer.core.base.BaseDTO;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 21:04
  * @Description:
  */

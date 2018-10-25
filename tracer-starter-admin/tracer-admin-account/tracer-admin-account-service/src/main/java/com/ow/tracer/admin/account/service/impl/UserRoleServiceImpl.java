@@ -10,7 +10,7 @@ import com.ow.tracer.admin.account.service.IUserRoleService;
 import org.springframework.stereotype.Service;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-10-16 23:12
  * @Description:
  */

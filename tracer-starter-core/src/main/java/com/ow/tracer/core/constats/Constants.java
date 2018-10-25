@@ -5,7 +5,7 @@ import com.google.common.base.Charsets;
 import java.nio.charset.Charset;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-6 01:57
  * @Description:系统级常量类
  */

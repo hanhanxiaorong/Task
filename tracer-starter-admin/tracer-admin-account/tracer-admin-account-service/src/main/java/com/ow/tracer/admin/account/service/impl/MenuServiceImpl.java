@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @Auther: Easy
+ * @auther: Easy
  * @Date: 18-9-25 21:46
  * @Description:
  */
