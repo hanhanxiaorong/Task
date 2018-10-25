@@ -1,5 +1,5 @@
 @DIRECTIVE SAFE_OUTPUT_OPEN;
-package com.ow.tracer.${data.packageName}.dto;
+package com.ow.tracer.${data.packageName}.${data.functionName}.dto;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ow.tracer.core.base.BaseDTO;
 import java.io.Serializable;

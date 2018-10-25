@@ -35,10 +35,11 @@ public class GeoUtils {
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setAuthor("江雪立");
             generatorConfig.setPackageName(moudelName);
+            generatorConfig.setFunctionName(functionName);
             generatorConfig.setProjectName(project);
             generatorConfig.setTemplateRoot(FileUtil.getParent(FileUtil.getAbsolutePath(""), 2) + "/src/main/resources/generator/defaultTemplate/SSM" );//使用~代表从classpath读取模板
             generatorConfig.setTemplateId("/${packageName}/"+test2[i]);
-            generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+dbTableName+"/"+test2[i]);
+            generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+dbTableName+"/"+functionName+"/"+test2[i]);
             DatabaseConfig databaseConfig = new DatabaseConfig();
             String dbName = "tracer";//数据库名
             databaseConfig.setTablePrefix(dbTableName+"_%");

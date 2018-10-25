@@ -29,6 +29,8 @@ public class GeneratorInfo {
     /**包名*/
     private String packageName;
 
+    private String functionName;
+
     private String projectName;
     /**模块名*/
     private String model;
@@ -132,6 +134,14 @@ public class GeneratorInfo {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public void setFunctionName(String functionName) {
+        this.functionName = functionName;
     }
 
     @Override

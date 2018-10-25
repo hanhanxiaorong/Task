@@ -30,6 +30,8 @@ public class GeneratorConfig {
     private String className;
     /**包名*/
     private String packageName;
+    /**包名*/
+    private String functionName;
 
     private String projectName;
     /**模块名*/
@@ -47,6 +49,14 @@ public class GeneratorConfig {
         if (templateFileSuffix == null) {
             templateFileSuffix = ".tl";
         }
+    }
+
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public void setFunctionName(String functionName) {
+        this.functionName = functionName;
     }
 
     public String getOutputPath() {

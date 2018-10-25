@@ -1,7 +1,7 @@
-package com.ow.tracer.${data.packageName}.mapper;
+package com.ow.tracer.${data.packageName}.${data.functionName}.mapper;
 
 import com.ow.tracer.core.base.Mapper;
-import com.ow.tracer.${data.packageName}.dto.${data.className};
+import com.ow.tracer.${data.packageName}.${data.functionName}.dto.${data.className};
 
 
 /**

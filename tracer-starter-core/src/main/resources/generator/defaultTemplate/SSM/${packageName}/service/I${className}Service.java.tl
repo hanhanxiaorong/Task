@@ -1,7 +1,7 @@
-package com.ow.tracer.${data.packageName}.service;
+package com.ow.tracer.${data.packageName}.${data.functionName}.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ow.tracer.${data.packageName}.dto.${data.className};
+import com.ow.tracer.${data.packageName}.${data.functionName}.dto.${data.className};
 import com.ow.tracer.core.base.BaseService;
 
 /**

@@ -1,7 +1,7 @@
-package com.ow.tracer.${data.packageName}.rest;
+package com.ow.tracer.${data.packageName}.${data.functionName}.rest;
 
-import com.ow.tracer.${data.packageName}.dto.${data.className};
-import com.ow.tracer.${data.packageName}.service.I${data.className}Service;
+import com.ow.tracer.${data.packageName}.${data.functionName}.dto.${data.className};
+import com.ow.tracer.${data.packageName}.${data.functionName}.service.I${data.className}Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

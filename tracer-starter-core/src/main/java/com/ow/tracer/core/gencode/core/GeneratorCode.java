@@ -398,6 +398,7 @@ public class GeneratorCode {
                     }
                     gInfo.setPackageName(backB[0]);
                     gInfo.setProjectName(generatorConfig.getProjectName());
+                    gInfo.setFunctionName(generatorConfig.getFunctionName());
                     gInfo.setSequence(i+1);
                     generatorInfos.add(gInfo);
                 } else {
