@@ -18,7 +18,7 @@
 package com.ow.tracer.admin.account.dto;
 
 
-import com.ow.tracer.core.vo.MenuVO;
+import com.ow.tracer.common.vo.MenuVO;
 
 /**
  * @author easy

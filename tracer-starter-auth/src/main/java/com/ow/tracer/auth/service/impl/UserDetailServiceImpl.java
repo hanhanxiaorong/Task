@@ -18,11 +18,10 @@
 package com.ow.tracer.auth.service.impl;
 
 import com.ow.tracer.auth.util.UserDetailsImpl;
-import com.ow.tracer.core.vo.UserVO;
+import com.ow.tracer.common.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 /**
  * @author easy

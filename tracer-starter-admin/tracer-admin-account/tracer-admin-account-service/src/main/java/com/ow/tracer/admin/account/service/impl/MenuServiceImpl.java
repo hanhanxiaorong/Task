@@ -2,11 +2,9 @@ package com.ow.tracer.admin.account.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.admin.account.dto.Menu;
-import com.ow.tracer.admin.account.dto.User;
 import com.ow.tracer.admin.account.mapper.MenuMapper;
-import com.ow.tracer.admin.account.mapper.UserMapper;
 import com.ow.tracer.admin.account.service.IMenuService;
-import com.ow.tracer.core.vo.MenuVO;
+import com.ow.tracer.common.vo.MenuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

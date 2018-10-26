@@ -1,8 +1,7 @@
 package com.ow.tracer.admin.account.mapper;
 
-import com.ow.tracer.admin.account.dto.Dept;
 import com.ow.tracer.admin.account.dto.DeptRelation;
-import com.ow.tracer.core.base.Mapper;
+import com.ow.tracer.common.base.Mapper;
 
 /**
  * @auther: Easy

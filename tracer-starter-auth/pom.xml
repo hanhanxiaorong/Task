@@ -26,7 +26,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ow</groupId>
-            <artifactId>tracer-starter-core</artifactId>
+            <artifactId>tracer-starter-common</artifactId>
             <version>1.0</version>
         </dependency>
 

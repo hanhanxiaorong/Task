@@ -18,7 +18,7 @@
 package com.ow.tracer.admin.account.vo;
 
 
-import com.ow.tracer.core.vo.TreeNode;
+import com.ow.tracer.common.vo.TreeNode;
 
 /**
  * @author Easy

@@ -2,7 +2,7 @@ package com.ow.tracer.auth.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.auth.mapper.UserServiceMapper;
-import com.ow.tracer.core.vo.UserVO;
+import com.ow.tracer.common.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

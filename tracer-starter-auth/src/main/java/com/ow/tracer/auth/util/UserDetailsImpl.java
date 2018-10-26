@@ -1,9 +1,8 @@
 package com.ow.tracer.auth.util;
 
-import com.ow.tracer.core.constats.CommonConstant;
-import com.ow.tracer.core.vo.AdminRole;
-import com.ow.tracer.core.vo.MenuVO;
-import com.ow.tracer.core.vo.UserVO;
+import com.ow.tracer.common.constats.CommonConstant;
+import com.ow.tracer.common.vo.AdminRole;
+import com.ow.tracer.common.vo.UserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

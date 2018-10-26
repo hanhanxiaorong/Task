@@ -1,7 +1,7 @@
 package com.ow.tracer.admin.account.dto;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ow.tracer.core.base.BaseDTO;
+import com.ow.tracer.common.base.BaseDTO;
 
 import java.io.Serializable;
 

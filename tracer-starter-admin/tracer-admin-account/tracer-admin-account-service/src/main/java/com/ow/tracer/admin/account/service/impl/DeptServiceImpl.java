@@ -1,6 +1,5 @@
 package com.ow.tracer.admin.account.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.AbstractWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.admin.account.dto.Dept;
@@ -11,8 +10,7 @@ import com.ow.tracer.admin.account.mapper.DeptRelationMapper;
 import com.ow.tracer.admin.account.mapper.UserMapper;
 import com.ow.tracer.admin.account.service.IDeptService;
 import com.ow.tracer.admin.account.vo.DeptTree;
-import com.ow.tracer.core.constats.CommonConstant;
-import com.ow.tracer.core.util.TreeUtil;
+import com.ow.tracer.common.util.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

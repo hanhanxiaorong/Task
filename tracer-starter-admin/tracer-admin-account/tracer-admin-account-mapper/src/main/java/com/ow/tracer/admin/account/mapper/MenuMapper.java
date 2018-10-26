@@ -1,9 +1,8 @@
 package com.ow.tracer.admin.account.mapper;
 
 import com.ow.tracer.admin.account.dto.Menu;
-import com.ow.tracer.admin.account.dto.User;
-import com.ow.tracer.core.base.Mapper;
-import com.ow.tracer.core.vo.MenuVO;
+import com.ow.tracer.common.base.Mapper;
+import com.ow.tracer.common.vo.MenuVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

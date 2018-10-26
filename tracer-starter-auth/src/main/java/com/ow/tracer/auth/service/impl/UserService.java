@@ -1,7 +1,6 @@
 package com.ow.tracer.auth.service.impl;
 
-import com.ow.tracer.core.vo.UserVO;
-import org.springframework.stereotype.Service;
+import com.ow.tracer.common.vo.UserVO;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**

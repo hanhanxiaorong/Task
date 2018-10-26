@@ -2,11 +2,10 @@ package com.ow.tracer.admin.account.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.ow.tracer.admin.account.dto.User;
 import com.ow.tracer.admin.account.dto.UserInfo;
-import com.ow.tracer.core.base.BaseService;
-import com.ow.tracer.core.vo.UserVO;
+import com.ow.tracer.common.base.BaseService;
+import com.ow.tracer.common.vo.UserVO;
 
 /**
  * @auther: Easy

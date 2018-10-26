@@ -3,7 +3,7 @@ package com.ow.tracer.admin.account.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ow.tracer.admin.account.dto.Dept;
 import com.ow.tracer.admin.account.vo.DeptTree;
-import com.ow.tracer.core.base.BaseService;
+import com.ow.tracer.common.base.BaseService;
 
 import java.util.List;
 

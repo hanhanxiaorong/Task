@@ -3,8 +3,8 @@ package com.ow.tracer.auth.config;
 
 import com.ow.tracer.auth.service.impl.UserDetailServiceImpl;
 import com.ow.tracer.auth.util.UserDetailsImpl;
-import com.ow.tracer.core.constats.CommonConstant;
-import com.ow.tracer.core.constats.SecurityConstants;
+import com.ow.tracer.common.constats.CommonConstant;
+import com.ow.tracer.common.constats.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

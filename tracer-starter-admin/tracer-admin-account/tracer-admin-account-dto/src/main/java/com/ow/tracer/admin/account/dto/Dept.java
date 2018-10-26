@@ -20,10 +20,7 @@ package com.ow.tracer.admin.account.dto;
 
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ow.tracer.core.base.BaseDTO;
-
-import java.io.Serializable;
-import java.util.Date;
+import com.ow.tracer.common.base.BaseDTO;
 
 /**
  * <p>

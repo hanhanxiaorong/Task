@@ -1,7 +1,7 @@
 package com.ow.tracer.admin.account.mapper;
 
 import com.ow.tracer.admin.account.dto.UserRole;
-import com.ow.tracer.core.base.Mapper;
+import com.ow.tracer.common.base.Mapper;
 
 /**
  * @author : Easy

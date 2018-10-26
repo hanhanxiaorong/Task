@@ -26,7 +26,7 @@
     <modules>
         <module>tracer-starter-admin</module>
         <module>tracer-starter-cache</module>
-        <module>tracer-starter-core</module>
+        <module>tracer-starter-common</module>
         <module>tracer-starter-auth</module>
 
     </modules>

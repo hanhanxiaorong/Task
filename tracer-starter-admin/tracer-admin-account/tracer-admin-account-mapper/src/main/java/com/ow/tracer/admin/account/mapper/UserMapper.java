@@ -3,8 +3,7 @@ package com.ow.tracer.admin.account.mapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ow.tracer.admin.account.dto.User;
-import com.ow.tracer.core.base.Mapper;
-import com.ow.tracer.core.vo.UserVO;
+import com.ow.tracer.common.base.Mapper;
 
 /**
  * @auther: Easy

@@ -1,8 +1,7 @@
 package com.ow.tracer.admin.account.service;
 
-import com.ow.tracer.admin.account.dto.Menu;
 import com.ow.tracer.admin.account.dto.Role;
-import com.ow.tracer.core.base.BaseService;
+import com.ow.tracer.common.base.BaseService;
 
 /**
  * @auther: Easy

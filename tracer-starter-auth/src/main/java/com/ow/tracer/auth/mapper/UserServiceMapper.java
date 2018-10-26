@@ -17,13 +17,8 @@
 
 package com.ow.tracer.auth.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import com.ow.tracer.core.base.Mapper;
-import com.ow.tracer.core.vo.UserVO;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
+import com.ow.tracer.common.base.Mapper;
+import com.ow.tracer.common.vo.UserVO;
 
 /**
  * <p>
