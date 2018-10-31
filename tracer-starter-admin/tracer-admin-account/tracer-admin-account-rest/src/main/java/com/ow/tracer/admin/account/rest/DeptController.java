@@ -57,6 +57,14 @@ public class DeptController extends BaseController {
         logger.info("treeList查出有+："+treeList.size());
         return Results.successWithData(treeList, BaseEnums.SUCCESS.desc());
     }
+    @GetMapping(value="/treeData")
+    public List<DeptTree> treeData() {
+        Dept condition = new Dept();
+        condition.setDelFlag(CommonConstant.STATUS_NORMAL);
+        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition));
+        logger.info("treeList查出有+："+treeList.size());
+        return treeList;
+    }
     /**
      * 通过ID查询
      *

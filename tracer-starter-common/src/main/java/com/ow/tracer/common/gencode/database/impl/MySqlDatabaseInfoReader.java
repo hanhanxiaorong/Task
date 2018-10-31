@@ -49,7 +49,7 @@ public class MySqlDatabaseInfoReader implements DatabaseInfoReader {
             String column = StringUtil.trim(map.get("COLUMN_NAME"));//数据库字段名
             String [] backB= column.split("_");
              if(backB[0].equals("system")||column.equals("id")||column.equals("del_flag")||column.equals("version_number")||column.equals("create_date")||column.equals("create_by")||column.equals("update_by")||column.equals("update_date")||column.equals("tenant_id")||column.equals("enabled")){
-                System.out.println("不生成");
+
             }
             else{
                 String columnKey = StringUtil.trim(map.get("COLUMN_KEY"));
@@ -115,8 +115,8 @@ public class MySqlDatabaseInfoReader implements DatabaseInfoReader {
             }
             sql.append(")");
         }
-        System.out.println(sql.toString());
-        System.out.println(dbConfig.getTablePrefix());
+
+
         Connection connection = dbConfig.getConnection();
         List<Map> mapList = JdbcUtil.executeSql(connection, sql.toString(),dbName,dbConfig.getTablePrefix());
         List<TableInfo> list = new ArrayList<TableInfo>();

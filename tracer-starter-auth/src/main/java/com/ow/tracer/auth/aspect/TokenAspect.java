@@ -28,8 +28,8 @@ public class TokenAspect {
     public void doAfterReturning(ResponseEntity<OAuth2AccessToken> obj) throws Exception {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         // 打印用户名
-        System.out.println(request.getParameter("username"));
+
         // 打印token
-        System.out.println(obj.getBody().getValue());
+
     }
 }

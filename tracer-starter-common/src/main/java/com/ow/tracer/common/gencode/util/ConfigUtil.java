@@ -42,7 +42,7 @@ public class ConfigUtil {
         if (matcher.find()) {
             String orders = matcher.group();
             orders = orders.substring(2, orders.length() - 2);
-//            System.out.println("Orders:" + orders);
+//
             String mark = "";
             boolean markOn = false;
             StringBuilder orderTemp = new StringBuilder();

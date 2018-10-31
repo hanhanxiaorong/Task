@@ -54,7 +54,7 @@ public class FileGeneration {
                 String sourceAbsolutePath = file.getAbsolutePath();
                 String sourceFileName = null;
                 String sourceDirPath = getReplacedSourceDirPath(sourceAbsolutePath, false, sourceFileName);
-                System.out.println(sourceDirPath);
+
                 String targetDirPath = getReplacedTargetDirPath(sourceAbsolutePath, sourceDirPath, sourceFileName, false);
                 makeTargetDirectory(targetDirPath);
                 createFile(sourceDirPath);
@@ -134,7 +134,7 @@ public class FileGeneration {
         try {
             fw = new FileWriter(targetDirPath + "/" + targetFileName);
             fw.write(newContent);
-            System.out.println(targetDirPath + "/" + targetFileName);
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally{

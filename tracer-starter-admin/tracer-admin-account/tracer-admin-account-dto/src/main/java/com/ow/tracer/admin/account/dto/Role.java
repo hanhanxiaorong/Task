@@ -11,15 +11,13 @@ import com.ow.tracer.common.base.BaseDTO;
  * @Description:
  */
 @TableName("admin_role")
-@SuppressWarnings("serial")
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Role extends BaseDTO<Role> {
-    @TableField("role_name")
     private String roleName;
-    @TableField("role_code")
     private String roleCode;
-    @TableField("role_desc")
     private String roleDesc;
+    private String deptId;
+    @TableField(exist = false)
+    private String deptName;
 
     public String getRoleName() {
         return roleName;
@@ -43,5 +41,21 @@ public class Role extends BaseDTO<Role> {
 
     public void setRoleDesc(String roleDesc) {
         this.roleDesc = roleDesc;
+    }
+
+    public String getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 }

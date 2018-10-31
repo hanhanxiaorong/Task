@@ -30,13 +30,13 @@
 		'component',
 		'sort',
 		'type',
-		`create_by`,
 		'create_by',
 		`update_by`,
 		`update_date`,
 		`tenan_id`,
 		`enabled`,
-		`del_flag`
+		`del_flag`,
+		'version_number'
 
 	</sql>
 	<select id="findMenuByRoleName"  resultMap="MenuVoResultMap">

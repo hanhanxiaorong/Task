@@ -31,7 +31,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
     @Override
     public List<DeptTree> selectListTree(QueryWrapper<Dept> sysDeptEntityWrapper) {
         List<Dept> list = this.list(sysDeptEntityWrapper);
-        System.out.println("部门数量有"+list.size());
+
         return getDeptTree(this.list(sysDeptEntityWrapper),"0");
     }
     /**
@@ -54,7 +54,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
             node.setName(dept.getName());
             trees.add(node);
         }
-        System.out.println("执行排序的有"+trees.size());
+
         return TreeUtil.bulid(trees, root);
     }
 
@@ -95,7 +95,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
         Dept condition = new Dept();
         condition.setParentId(id);
         List<Dept> list =  this.list(new QueryWrapper<>(condition));
-        System.out.println(list.size());
+
         if(list.size()>0){
             for(Dept dept : list){
                 User userCondition = new User();

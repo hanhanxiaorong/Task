@@ -96,7 +96,7 @@ public class MybatusPlusConfig {
     @Bean
     public PerformanceInterceptor performanceInterceptor() {
 
-        System.out.println("1213131");
+
         return new PerformanceInterceptor();
     }
 

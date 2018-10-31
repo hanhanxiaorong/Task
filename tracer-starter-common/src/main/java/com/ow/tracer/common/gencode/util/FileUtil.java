@@ -290,7 +290,7 @@ public class FileUtil {
         List<String> strings = traversePackageGetAllFileName("/");
         for (String s :
                 strings) {
-            System.out.println(s);
+
 
         }
     }*/

@@ -55,7 +55,7 @@ public class TreeUtil {
                 }
             }
         }
-        System.out.println(trees.size());
+
         return trees;
     }
 

@@ -172,7 +172,7 @@ public class WordUtil {
         if (namingRule == DbConst.NAMING_UNDERLINE_DIVIDE) {
             name = WordUtil.underlineToCamel(name);
             name = WordUtil.initialLow(name);
-            System.out.println(name);
+
 
         } else if (namingRule == DbConst.NAMING_CAMELCASE) {
             name = WordUtil.initialLow(name);
@@ -184,14 +184,14 @@ public class WordUtil {
 
   /*  public static void main(String[] args) {
         String a = "user_account";
-        System.out.println(converToProperty(a, null));
+
         String b = "userAccount";
-        System.out.println(converToProperty(b, null));
+
         String c = "user";
-        System.out.println(converToProperty(c, null));
+
         String d = "user_map";
-        System.out.println(converToProperty(d, DbConst.NAMING_UNDERLINE_DIVIDE));
+
         String e = "userMap";
-        System.out.println(converToProperty(e, DbConst.NAMING_CAMELCASE));
+
     }*/
 }

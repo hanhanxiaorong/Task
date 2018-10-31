@@ -123,7 +123,7 @@ public class GeneratorCode {
 
     private void startBatchGenerator() {
         List<TableInfo> tableInfoList = readTablesInfo();
-        System.out.println(tableInfoList.size());
+
         List<GeneratorInfo> generatorInfolist = buildGeneratorInfoList(tableInfoList);
         processTemplate(generatorInfolist);
     }
@@ -225,10 +225,10 @@ public class GeneratorCode {
             String templatePath = FileUtil.addLastSeparator(templateRoot) + templateId;
             if (templatePath.startsWith("~")) {
 
-                System.out.println(templatePath+"获取到的路径");
+
                 //从classPath读取模板
                 templatePath = templatePath.substring(1);
-                System.out.println(templatePath+"获取到的路径，处理后");
+
 
                 URL resource = GeneratorCode.class.getResource(templatePath);
                 if (resource == null) {
@@ -533,7 +533,7 @@ public class GeneratorCode {
         }
         String tableNamingRule = databaseConfig.getTableNamingRule();
         String property = WordUtil.converToProperty(tableName, tableNamingRule);
-        System.out.println(property);
+
         return WordUtil.initialUp(property);
     }
 
@@ -570,7 +570,7 @@ public class GeneratorCode {
         this.startTime = System.currentTimeMillis();
         StringBuilder str = ReuseStringBuilder.getStringBuilder();
         str.append("[").append(DateUtil.getNowDateYMDHMS()).append("]开始生成文件...");
-//        System.out.println("["+DateUtil.getNowDateYMDHMS() + "]开始生成文件...");
+//
         out.println(str);
         analysisConfig();
         buildDatabaseInfoReader();

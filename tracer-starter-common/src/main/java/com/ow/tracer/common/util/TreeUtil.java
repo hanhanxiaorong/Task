@@ -41,7 +41,7 @@ public class TreeUtil {
         List<T> trees = new ArrayList<T>();
         for (T treeNode : treeNodes) {
             if (root.equals(treeNode.getParentId())) {
-                System.out.println(treeNode.getId());
+
                 trees.add(treeNode);
             }
             for (T it : treeNodes) {
@@ -53,7 +53,7 @@ public class TreeUtil {
                 }
             }
         }
-        System.out.println(trees.size());
+
         return trees;
     }
 

@@ -163,4 +163,17 @@ public class MenuTree extends TreeNode {
         this.label = menuVo.getName();
         this.sort = menuVo.getSort();
     }
+
+    public MenuTree(Menu menuVo) {
+        this.id = menuVo.getId();
+        this.parentId = menuVo.getParentId();
+        this.icon = menuVo.getIcon();
+        this.name = menuVo.getName();
+        this.url = menuVo.getUrl();
+        this.path = menuVo.getPath();
+        this.component = menuVo.getComponent();
+        this.type = menuVo.getType();
+        this.label = menuVo.getName();
+        this.sort = menuVo.getSort();
+    }
 }

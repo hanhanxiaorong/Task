@@ -52,7 +52,7 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
      */
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        System.out.println("123456789");
+
         return methodParameter.getParameterType().equals(UserVO.class);
     }
 

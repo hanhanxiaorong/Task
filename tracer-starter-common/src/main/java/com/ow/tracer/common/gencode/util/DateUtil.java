@@ -19,7 +19,7 @@ public class DateUtil {
 
 /*    public static void main(String[] args) {
         String s = dateFormat(new Date(), null);
-        System.out.println(s);
+
         getNowDateYMD();
     }*/
 

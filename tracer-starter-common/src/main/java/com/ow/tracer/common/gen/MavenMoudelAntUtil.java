@@ -215,7 +215,7 @@ public class MavenMoudelAntUtil {
             File file =new File(dirPath);
             if  (!file .exists()  && !file.isDirectory()){
                 file .mkdirs();
-                System.out.println(dirPath);
+
             }
         } catch (Exception e) {
             log.error("dirPath:" + dirPath, e);
@@ -247,7 +247,7 @@ public class MavenMoudelAntUtil {
         try {
             fw = new FileWriter(targetDirPath + "\\" + targetFileName);
             fw.write(newContent);
-            System.out.println(targetDirPath + "\\" + targetFileName);
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally{

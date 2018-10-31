@@ -23,7 +23,7 @@ public class ReuseStringBuilder {
      */
     public static StringBuilder getStringBuilder() {
         StringBuilder sb = threadLocalStringBuilder.get();
-//        System.out.println("This StringBuilder hashCode is:" + sb.hashCode());
+//
         sb.setLength(0);
         return sb;
     }

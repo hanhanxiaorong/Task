@@ -86,7 +86,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
            int i=0;
            for(UserRole userRole:userRoles){
                     Role role = roleService.getById(userRole.getRoleId());
-                    System.out.println(role.getRoleName());
+
                     roleStr[i]=role.getRoleName() ;
                     i++;
            }

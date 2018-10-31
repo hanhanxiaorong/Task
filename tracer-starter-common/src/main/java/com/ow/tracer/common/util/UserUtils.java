@@ -45,7 +45,7 @@ public class UserUtils {
      */
     public static List<String> getRole(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
-        System.out.println(token);
+
         String key = Base64.getEncoder().encodeToString(CommonConstant.SIGN_KEY.getBytes());
         Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
         List<String> roleNames = (List<String>) claims.get("authorities");

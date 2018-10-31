@@ -41,7 +41,7 @@ public class RoleMenu extends BaseDTO<RoleMenu> {
     /**
      * 菜单ID
      */
-	private Integer menuId;
+	private String menuId;
 
 	public String getRoleId() {
 		return roleId;
@@ -51,11 +51,11 @@ public class RoleMenu extends BaseDTO<RoleMenu> {
 		this.roleId = roleId;
 	}
 
-	public Integer getMenuId() {
+	public String getMenuId() {
 		return menuId;
 	}
 
-	public void setMenuId(Integer menuId) {
+	public void setMenuId(String menuId) {
 		this.menuId = menuId;
 	}
 

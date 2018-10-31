@@ -27,7 +27,7 @@ public class GeneratorConfigUtils {
         List<GeneratorInfo> buildData = generatorCode.getBuildData();//获取构建数据集
     }
     public static  void  batchgencode (GeneratorConfig generatorConfig,DatabaseConfig databaseConfig){
-        System.out.println(databaseConfig.getDbName());
+
         GlobalConfig globalConfig = new GlobalConfig();
         GeneratorCode generatorCode = new GeneratorCode(databaseConfig, generatorConfig, globalConfig);//写法一，使用配置信息创建文件生成核心类
         generatorCode.batchGenerator();//执行批量生成//

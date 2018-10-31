@@ -58,10 +58,10 @@ public class GeoUtils {
 
         String path = "";
         String relativelyPath=System.getProperty("user.dir");
-        System.out.println(relativelyPath);
+
         File file=new File(relativelyPath);
         File[] tempList = file.listFiles();
-        System.out.println("该目录下对象个数："+tempList.length);
+
 
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) { }
@@ -72,17 +72,17 @@ public class GeoUtils {
                 }
             }
         }
-        System.out.println(path);
+
         return path;
     }
     public static  String getProjectPath(String url){
 
         String path = "";
         String relativelyPath=System.getProperty("user.dir");
-        System.out.println(relativelyPath);
+
         File file=new File(relativelyPath);
         File[] tempList = file.listFiles();
-        System.out.println("该目录下对象个数："+tempList.length);
+
 
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) { }
