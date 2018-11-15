@@ -13,6 +13,7 @@ import com.ow.tracer.admin.account.vo.DeptTree;
 import com.ow.tracer.common.util.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +30,14 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
     @Autowired
     UserMapper userMapper;
     @Override
-    public List<DeptTree> selectListTree(QueryWrapper<Dept> sysDeptEntityWrapper) {
-        List<Dept> list = this.list(sysDeptEntityWrapper);
+    public List<DeptTree> selectListTree(QueryWrapper<Dept> sysDeptEntityWrapper,String deptId) {
+        Dept dept =  this.getById(deptId);
+        if(dept.getId()==null){
+            return getDeptTree(this.list(sysDeptEntityWrapper),deptId);
+        }else{
+            return getDeptTree(this.list(sysDeptEntityWrapper),dept.getParentId());
 
-        return getDeptTree(this.list(sysDeptEntityWrapper),"0");
+        }
     }
     /**
      * 构建部门树
@@ -42,6 +47,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
      * @return
      */
     private List<DeptTree> getDeptTree(List<Dept> depts, String root) {
+        System.out.println( depts.size()+"部门查出来有");
         List<DeptTree> trees = new ArrayList<>();
         DeptTree node;
         for (Dept dept : depts) {
@@ -114,4 +120,6 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
           deptRelationMapper.delete(deptRelationQueryWrapper);
           return true;
     }
+
+
 }

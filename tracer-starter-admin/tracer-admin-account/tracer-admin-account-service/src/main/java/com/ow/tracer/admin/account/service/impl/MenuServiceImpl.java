@@ -27,7 +27,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     IRoleMenuService roleMenuService;
 
     @Override
-    @Cacheable(value = "menu_details", key = "#role  + '_menu'")
     public List<MenuVO> findMenuByRoleName(String role) {
         return sysMenuMapper.findMenuByRoleName(role);
     }

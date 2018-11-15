@@ -56,7 +56,6 @@
             `user`.create_date AS ucreate_time,
             `user`.update_date AS uupdate_time,
             `user`.del_flag AS udel_flag,
-            `user`.dept_id AS deptId,
             r.id,
             r.role_name,
             r.role_code,

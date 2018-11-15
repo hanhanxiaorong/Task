@@ -3,8 +3,10 @@ package com.ow.tracer.common.base;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.*;
+import com.ow.tracer.common.constats.CommonConstant;
 import com.ow.tracer.common.constats.Constants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -47,6 +49,7 @@ public class BaseDTO <T extends Model> extends Model<T> {
     /**
      * 数据版本号,每发生update则自增,用于实现乐观锁.
      */
+    @Version
     private Long versionNumber;
 
     //
@@ -57,6 +60,14 @@ public class BaseDTO <T extends Model> extends Model<T> {
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long createBy;
+    //
+    // 下面是标准 WHO 字段
+    // ----------------------------------------------------------------------------------------------------
+    /**
+     * 创建人用户名
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String delFlag;
     /**
      * 创建人名称
      */
@@ -99,6 +110,10 @@ public class BaseDTO <T extends Model> extends Model<T> {
     @TableField(exist = false)
     protected Map<String, Object> innerMap = new HashMap<>();
 
+    public BaseDTO(){
+        super();
+        this.delFlag= CommonConstant.STATUS_NORMAL;
+    }
 
     public String get_operate() {
         return _operate;
@@ -108,7 +123,6 @@ public class BaseDTO <T extends Model> extends Model<T> {
         this._operate = _operate;
     }
 
-    @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
@@ -180,6 +194,14 @@ public class BaseDTO <T extends Model> extends Model<T> {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 
     @Override

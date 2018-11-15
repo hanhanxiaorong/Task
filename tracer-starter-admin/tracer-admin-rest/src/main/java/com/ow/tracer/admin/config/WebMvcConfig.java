@@ -1,4 +1,4 @@
-package com.ow.tracer.common.config;
+package com.ow.tracer.admin.config;
 
 
 import com.ow.tracer.common.resolver.TokenArgumentResolver;

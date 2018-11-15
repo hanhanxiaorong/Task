@@ -10,4 +10,14 @@ import com.ow.tracer.common.base.BaseService;
  * @description:
  */
 public interface IRoleMenuService extends BaseService<RoleMenu> {
+    /**
+     * 更新角色菜单
+     *
+     *
+     * @param role
+     * @param roleId  角色
+     * @param menuIds 菜单列表
+     * @return
+     */
+    Boolean insertRoleMenus(String role, String roleId, String menuIds);
 }

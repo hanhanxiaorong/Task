@@ -52,7 +52,6 @@ public class Menu extends BaseDTO<Menu> {
      */
     private String type;
 
-    private String delFlag;
     /**
      * 前端URL
      */
@@ -130,13 +129,6 @@ public class Menu extends BaseDTO<Menu> {
         this.type = type;
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
-    }
 
     public String getPath() {
         return path;
@@ -163,8 +155,6 @@ public class Menu extends BaseDTO<Menu> {
                 ", component=" + component +
                 ", sort=" + sort +
                 ", type=" + type +
-
-                ", delFlag=" + delFlag +
                 "}";
     }
 }

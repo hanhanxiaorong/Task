@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ow.tracer.admin.account.dto.Dept;
+import com.ow.tracer.admin.account.dto.User;
 import com.ow.tracer.admin.account.service.IDeptService;
+import com.ow.tracer.admin.account.service.IUserService;
 import com.ow.tracer.admin.account.vo.DeptTree;
 import com.ow.tracer.common.base.BaseController;
 import com.ow.tracer.common.base.BaseEnums;
@@ -36,6 +38,8 @@ public class DeptController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private IDeptService deptService;
+    @Autowired
+    private IUserService userService;
     @GetMapping(value="/pageList")
     public Result pageList(Integer current){
         Page page = new Page();
@@ -49,11 +53,26 @@ public class DeptController extends BaseController {
         List<Dept> deptList =  deptService.list(new QueryWrapper<>());
         return Results.successWithData(deptList, BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }
-    @GetMapping(value="/tree")
-    public Result getTree() {
+    @GetMapping(value="/selDeptLIst")
+    public  List<DeptTree> selDeptLIst(UserVO userVO){
+        User contion = new User();
+        contion.setUserName(userVO.getUserName());
+        User user =  userService.getOne(new QueryWrapper<>(contion));
         Dept condition = new Dept();
         condition.setDelFlag(CommonConstant.STATUS_NORMAL);
-        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition));
+        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition),user.getDeptId());
+        logger.info("treeList查出有+："+treeList.size());
+        return treeList;
+    }
+    @GetMapping(value="/tree")
+    public Result getTree(UserVO userVO) {
+        User contion = new User();
+        contion.setUserName(userVO.getUserName());
+        User user =  userService.getOne(new QueryWrapper<>(contion));
+
+        Dept condition = new Dept();
+        condition.setDelFlag(CommonConstant.STATUS_NORMAL);
+        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition),user.getDeptId());
         logger.info("treeList查出有+："+treeList.size());
         return Results.successWithData(treeList, BaseEnums.SUCCESS.desc());
     }
@@ -61,7 +80,7 @@ public class DeptController extends BaseController {
     public List<DeptTree> treeData() {
         Dept condition = new Dept();
         condition.setDelFlag(CommonConstant.STATUS_NORMAL);
-        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition));
+        List<DeptTree> treeList = deptService.selectListTree(new QueryWrapper<>(condition),"0");
         logger.info("treeList查出有+："+treeList.size());
         return treeList;
     }

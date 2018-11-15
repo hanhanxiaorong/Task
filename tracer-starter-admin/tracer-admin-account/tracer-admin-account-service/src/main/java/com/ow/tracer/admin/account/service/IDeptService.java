@@ -18,7 +18,7 @@ public interface IDeptService extends BaseService<Dept> {
      * @param sysDeptEntityWrapper
      * @return 树
      */
-    List<DeptTree> selectListTree(QueryWrapper<Dept> sysDeptEntityWrapper);
+    List<DeptTree> selectListTree(QueryWrapper<Dept> sysDeptEntityWrapper,String deptId);
     /**
      * 新增部门及其关联关系
      * @param dept

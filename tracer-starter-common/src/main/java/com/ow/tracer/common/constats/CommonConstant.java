@@ -53,12 +53,12 @@ public interface CommonConstant {
     /**
      * 菜单
      */
-    String MENU = "0";
+    String MENU = "1";
 
     /**
      * 按钮
      */
-    String BUTTON = "1";
+    String BUTTON = "2";
 
     /**
      * 删除标记

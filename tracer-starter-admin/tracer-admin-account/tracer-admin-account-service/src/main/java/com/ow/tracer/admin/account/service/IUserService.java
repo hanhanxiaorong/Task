@@ -15,4 +15,7 @@ import com.ow.tracer.common.vo.UserVO;
 public interface  IUserService extends BaseService<User> {
     public UserInfo getUserInfo(UserVO userVO);
     public IPage<User> selectUserPage(Page<User> page);
+    public boolean installUser(User user);
+    public boolean updateUser(User user);
+
 }

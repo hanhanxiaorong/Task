@@ -21,12 +21,10 @@ import com.ow.tracer.common.vo.MenuVO;
 import com.ow.tracer.common.vo.UserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @auther: Easy
@@ -81,17 +79,37 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         for(User user :iPage.getRecords()){
             QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("user_id",user.getId());
-           List<UserRole> userRoles = userRoleService.list(queryWrapper);
-            String[] roleStr = new String[userRoles.size()];
-           int i=0;
-           for(UserRole userRole:userRoles){
-                    Role role = roleService.getById(userRole.getRoleId());
+            UserRole userRoles = userRoleService.getOne(queryWrapper);
 
-                    roleStr[i]=role.getRoleName() ;
-                    i++;
-           }
-            user.setRoleStr(roleStr);
+            user.setRole(userRoles.getRoleId());
         }
         return iPage;
+    }
+
+    @Override
+    public boolean installUser(User user) {
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setCreateDate(new Date());
+        user.setVersionNumber(new Long(0));
+        user.setDelFlag("0");
+        this.save(user);
+        UserRole userRole = new UserRole();
+        userRole.setUserId(user.getId());
+        userRole.setRoleId(user.getRole());
+        userRole.setCreateDate(new Date());
+        userRoleService.save(userRole);
+        return true;
+    }
+    @Override
+    public boolean updateUser(User user) {
+        user.setUpdateDate(new Date());
+        this.updateById(user);
+        UserRole contion = new UserRole();
+        contion.setUserId(user.getId());
+        UserRole userRole = userRoleService.getOne(new QueryWrapper<>(contion));
+        userRole.setRoleId(user.getRole());
+        userRole.setUpdateDate(new Date());
+        userRoleService.saveOrUpdate(userRole);
+        return true;
     }
 }

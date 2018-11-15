@@ -41,10 +41,6 @@ public class Dept extends BaseDTO<Dept> {
      */
     private Integer orderNum;
 
-    /**
-     * 是否删除  -1：已删除  0：正常
-     */
-    private String delFlag;
 
     private String parentId;
 
@@ -64,13 +60,6 @@ public class Dept extends BaseDTO<Dept> {
         this.orderNum = orderNum;
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
-    }
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
@@ -86,7 +75,6 @@ public class Dept extends BaseDTO<Dept> {
         return "Dept{" +
                 ", id=" + this.getId() +
                 ", name=" + name +
-                ", delFlag=" + delFlag +
                 "}";
     }
 }

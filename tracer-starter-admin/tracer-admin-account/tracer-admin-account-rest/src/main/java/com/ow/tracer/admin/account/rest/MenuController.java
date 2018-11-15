@@ -44,10 +44,11 @@ public class MenuController extends BaseController {
         getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName)));
         List<MenuTree> menuTreeList = new ArrayList<>();
         all.forEach(menuVo -> {
-            if (CommonConstant.MENU.equals(menuVo.getType())) {
+            if (CommonConstant.MENU.equals(menuVo.getType())||"2".equals(menuVo.getType())) {
                 menuTreeList.add(new MenuTree(menuVo));
             }
         });
+        System.out.println(menuTreeList.size());
         CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
 
         return TreeUtil.bulid(menuTreeList, "-1");
@@ -59,6 +60,19 @@ public class MenuController extends BaseController {
         list = menuService.list(queryWrapper);
         List<MenuTree> menuTreeList = new ArrayList<>();
         list.forEach(menu -> {
+            menuTreeList.add(new MenuTree(menu));
+        });
+        CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
+
+        return Results.successWithData(TreeUtil.bulid(menuTreeList, "-1"), BaseEnums.SUCCESS.desc());
+    }
+    @GetMapping(value="permessionTree")
+    public Result  permessionTree(){
+        // 获取符合条件得菜单
+        Set<MenuVO> all = new HashSet<>();
+        getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName)));
+        List<MenuTree> menuTreeList = new ArrayList<>();
+        all.forEach(menu -> {
             menuTreeList.add(new MenuTree(menu));
         });
         CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
@@ -87,5 +101,25 @@ public class MenuController extends BaseController {
         boolean  boo = menuService.insertMenu(menu);
         return Results.successWithData(boo, BaseEnums.SUCCESS.desc());
     }
+    @PutMapping("/edit")
+    public Result edit (@RequestBody Menu menu){
 
+        boolean boo = menuService.updateById(menu);
+        return  Results.success();
+    }
+    /**
+     * 返回角色的菜单集合
+     *
+     * @param roleName 角色名称
+     * @return 属性集合
+     */
+    @GetMapping("/roleTree/{roleName}")
+    public Result roleTree(@PathVariable String roleName) {
+        List<MenuVO> menus = menuService.findMenuByRoleName(roleName);
+        List<String> menuList = new ArrayList<>();
+        for (MenuVO menuVo : menus) {
+            menuList.add(menuVo.getId());
+        }
+        return  Results.successWithData(menuList,BaseEnums.SUCCESS.desc(),BaseEnums.SUCCESS.code());
+    }
 }

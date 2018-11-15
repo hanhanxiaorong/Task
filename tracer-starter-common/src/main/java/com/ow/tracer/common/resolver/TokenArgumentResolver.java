@@ -22,6 +22,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.ow.tracer.common.vo.AdminRole;
 import com.ow.tracer.common.vo.UserVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;
@@ -72,6 +73,7 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+
         String roles = CollectionUtil.join(authentication.getAuthorities(),",");
         if (StrUtil.isBlank(username) || StrUtil.isBlank(roles)) {
             return null;

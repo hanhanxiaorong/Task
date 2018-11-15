@@ -22,7 +22,6 @@ public class User extends BaseDTO <User>{
     public String tenantId;
     public String avatar;
     public String salt;
-    public String delFlag;
     public String deptId;
     public String phone;
     @TableField(exist = false)
@@ -30,6 +29,8 @@ public class User extends BaseDTO <User>{
 
     @TableField(exist = false)
     public String  [] roleStr;
+    @TableField(exist = false)
+    public String      role;
     public String getUserName() {
         return userName;
     }
@@ -82,14 +83,6 @@ public class User extends BaseDTO <User>{
         this.salt = salt;
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
-    }
-
     public String[] getRoleStr() {
         return roleStr;
     }
@@ -120,5 +113,13 @@ public class User extends BaseDTO <User>{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

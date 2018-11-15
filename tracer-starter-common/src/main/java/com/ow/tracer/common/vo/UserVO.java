@@ -64,7 +64,7 @@ public class UserVO implements Serializable {
         /**
          * 部门ID
          */
-        private Integer deptId;
+        private String deptId;
         /**
          * 部门名称
          */
@@ -147,11 +147,11 @@ public class UserVO implements Serializable {
                 this.avatar = avatar;
         }
 
-        public Integer getDeptId() {
+        public String getDeptId() {
                 return deptId;
         }
 
-        public void setDeptId(Integer deptId) {
+        public void setDeptId(String deptId) {
                 this.deptId = deptId;
         }
 

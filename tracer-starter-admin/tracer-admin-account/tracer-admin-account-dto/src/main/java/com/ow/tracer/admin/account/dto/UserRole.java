@@ -46,7 +46,7 @@ public class UserRole extends BaseDTO<UserRole> {
     /**
      * 角色ID
      */
-	@TableId(type = IdType.INPUT)
+
 	private String roleId;
 
 	public String getUserId() {
