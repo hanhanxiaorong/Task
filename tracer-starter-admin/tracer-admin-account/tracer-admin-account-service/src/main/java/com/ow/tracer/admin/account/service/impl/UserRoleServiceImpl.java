@@ -7,6 +7,8 @@ import com.ow.tracer.admin.account.mapper.MenuMapper;
 import com.ow.tracer.admin.account.mapper.UserRoleMapper;
 import com.ow.tracer.admin.account.service.IMenuService;
 import com.ow.tracer.admin.account.service.IUserRoleService;
+import com.ow.tracer.common.base.BaseServiceImpl;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @Date: 18-10-16 23:12
  * @Description:
  */
+@CacheConfig(cacheNames = "userRole")
 @Service("iUserRoleService")
-
-public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements IUserRoleService {
+public class UserRoleServiceImpl extends BaseServiceImpl<UserRoleMapper, UserRole> implements IUserRoleService {
 }

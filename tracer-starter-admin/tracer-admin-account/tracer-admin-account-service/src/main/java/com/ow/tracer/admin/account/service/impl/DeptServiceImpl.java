@@ -10,8 +10,11 @@ import com.ow.tracer.admin.account.mapper.DeptRelationMapper;
 import com.ow.tracer.admin.account.mapper.UserMapper;
 import com.ow.tracer.admin.account.service.IDeptService;
 import com.ow.tracer.admin.account.vo.DeptTree;
+import com.ow.tracer.common.base.BaseServiceImpl;
 import com.ow.tracer.common.util.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -24,7 +27,7 @@ import java.util.List;
  * @Description:部门管理Impl
  */
 @Service
-public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
+public class DeptServiceImpl extends BaseServiceImpl<DeptMapper, Dept> implements IDeptService {
     @Autowired
     DeptRelationMapper deptRelationMapper;
     @Autowired

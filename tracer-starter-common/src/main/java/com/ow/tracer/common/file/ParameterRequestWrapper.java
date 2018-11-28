@@ -19,15 +19,18 @@ public class ParameterRequestWrapper extends HttpServletRequestWrapper {
         super(request);
         this.params = newParams;
     }
+    @Override
 
     public Map getParameterMap() {
         return params;
     }
+    @Override
 
     public Enumeration getParameterNames() {
         Vector l = new Vector(params.keySet());
         return l.elements();
     }
+    @Override
 
     public String[] getParameterValues(String name) {
         Object v = params.get(name);
@@ -41,6 +44,7 @@ public class ParameterRequestWrapper extends HttpServletRequestWrapper {
             return new String[] { v.toString() };
         }
     }
+    @Override
 
     public String getParameter(String name) {
         Object v = params.get(name);

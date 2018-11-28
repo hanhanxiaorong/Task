@@ -11,6 +11,7 @@ import com.ow.tracer.common.base.Mapper;
  * @Date: 18-10-16 23:45
  * @Description:
  */
+
 public interface RoleMapper  extends Mapper<Role> {
     /**
      * <p>

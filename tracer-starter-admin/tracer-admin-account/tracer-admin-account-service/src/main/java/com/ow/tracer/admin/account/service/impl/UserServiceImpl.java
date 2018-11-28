@@ -15,12 +15,15 @@ import com.ow.tracer.admin.account.service.IMenuService;
 import com.ow.tracer.admin.account.service.IRoleService;
 import com.ow.tracer.admin.account.service.IUserRoleService;
 import com.ow.tracer.admin.account.service.IUserService;
+import com.ow.tracer.common.base.BaseServiceImpl;
 import com.ow.tracer.common.constats.SecurityConstants;
 import com.ow.tracer.common.vo.AdminRole;
 import com.ow.tracer.common.vo.MenuVO;
 import com.ow.tracer.common.vo.UserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +34,9 @@ import java.util.*;
  * @Date: 18-9-10 21:56
  * @Description:
  */
+@CacheConfig(cacheNames = "user")
 @Service("iUserService")
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends BaseServiceImpl<UserMapper,User> implements IUserService {
     @Autowired
     private IMenuService menuService;
     @Autowired
@@ -40,6 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     private IRoleService roleService;
     @Override
+    //cacheManager = "cacheManager"可以不指定
     public UserInfo getUserInfo(UserVO userVO) {
         User usertion = new User();
         usertion.setUserName(userVO.getUserName());
@@ -85,7 +90,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         return iPage;
     }
-
     @Override
     public boolean installUser(User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));

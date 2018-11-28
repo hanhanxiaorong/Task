@@ -205,9 +205,9 @@ public class FileUtil {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            if (type.equals("file")) {
+            if ("file".equals(type)) {
                 fileNames = fileGetAllName(path);//文件资源在文件系统中
-            } else if (type.equals("jar")) {
+            } else if ("jar".equals(type)) {
                 fileNames = jarGetAllName(path);//文件资源在jar包中
             }
         } else {

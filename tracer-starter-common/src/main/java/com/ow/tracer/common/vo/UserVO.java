@@ -178,6 +178,25 @@ public class UserVO implements Serializable {
         public void setNickName(String nickName) {
                 this.nickName = nickName;
         }
+
+        @Override
+        public String toString() {
+                return "UserVO{" +
+                        "id='" + id + '\'' +
+                        ", userName='" + userName + '\'' +
+                        ", nickName='" + nickName + '\'' +
+                        ", password='" + password + '\'' +
+                        ", salt='" + salt + '\'' +
+                        ", createTime=" + createTime +
+                        ", updateTime=" + updateTime +
+                        ", delFlag='" + delFlag + '\'' +
+                        ", phone='" + phone + '\'' +
+                        ", avatar='" + avatar + '\'' +
+                        ", deptId='" + deptId + '\'' +
+                        ", deptName='" + deptName + '\'' +
+                        ", roleList=" + roleList +
+                        '}';
+        }
 }
 
 

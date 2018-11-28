@@ -18,6 +18,7 @@
 package com.ow.tracer.common.vo;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
  * @author Easy
  * @date 2018/10/10
  */
-public class TreeNode {
+public class TreeNode implements Serializable {
     protected String id;
     protected String parentId;
     protected List<TreeNode> children = new ArrayList<TreeNode>();

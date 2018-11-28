@@ -21,14 +21,14 @@ public class ConfigUtil {
     /**转换值Map-value的key*/
     public static final String CONVERT_VALUE_MAP_VALUE = "text";
     //匹配配置信息
-    private static final String commentCfgRegex = "\\{\\{.+\\}\\}$";
-    private static final Pattern commentCfgPattern = Pattern.compile(commentCfgRegex);
+    private static final String COMMENT_CGHREGEX = "\\{\\{.+\\}\\}$";
+    private static final Pattern COMMENTCFG_PATTERN = Pattern.compile(COMMENT_CGHREGEX);
     //1.5版本时的匹配key：值转换配置信息
-    private static final String commentConverRegex = "\\(.+:.+\\)$";
-    private static final Pattern commentConverPattern = Pattern.compile(commentConverRegex);
-
-    private static final String convertRegex = "^.+:.+$";//匹配"1:选项一..."格式的字符串
-    private static final Pattern convertPattern = Pattern.compile(convertRegex);
+    private static final String COMMENT_CONVERREGEX = "\\(.+:.+\\)$";
+    private static final Pattern COMMENT_CONVER_PATTERN = Pattern.compile(COMMENT_CONVERREGEX);
+    //匹配"1:选项一..."格式的字符串
+    private static final String CONVERT_REGEX = "^.+:.+$";
+    private static final Pattern CONVERT_PATTERN = Pattern.compile(CONVERT_REGEX);
 
     /**
      * 解析注释的配置
@@ -37,12 +37,11 @@ public class ConfigUtil {
      */
     public static Map<String, String> analysisCommentCfg(String comment) {
         comment = StringUtil.trim(comment);
-        Map<String, String> cfgMap = new HashMap<String, String>();
-        Matcher matcher = commentCfgPattern.matcher(comment);
+        Map<String, String> cfgMap = new HashMap<String, String>(50);
+        Matcher matcher = COMMENTCFG_PATTERN.matcher(comment);
         if (matcher.find()) {
             String orders = matcher.group();
             orders = orders.substring(2, orders.length() - 2);
-//
             String mark = "";
             boolean markOn = false;
             StringBuilder orderTemp = new StringBuilder();
@@ -52,13 +51,17 @@ public class ConfigUtil {
             for (int i = 0, len = orders.length(); i < len; i++) {
                 char c = orders.charAt(i);
                 if (c == '\'' || c == '"') {
-                    if (markOn) {//引号打开状态?
-                        if (mark.equals(""+c)) {//与开启引号相同?
+                    //引号打开状态?
+                    if (markOn) {
+                        if (mark.equals(""+c)) {
+                            //与开启引号相同?
                             markOn = false;
-                            if (orderOn) {//指令?
+                            if (orderOn) {
+                                //指令?
                                 orderOn = false;
                                 valueOn = true;
-                            } else if (valueOn) {//值?
+                            } else if (valueOn) {
+                                //值?
                                 valueOn = false;
                                 orderOn = true;
                             } else {
@@ -95,7 +98,8 @@ public class ConfigUtil {
                         }
                     }
                 } else if (c == ' ') {
-                    if (markOn) {//空格只有在引号内才有效,其它的忽略
+                    if (markOn) {
+                        //空格只有在引号内才有效,其它的忽略
                         if (orderOn) {
                             orderTemp.append(c);
                         } else if (valueOn) {
@@ -114,13 +118,15 @@ public class ConfigUtil {
                             if (orderOn) {
                                 orderOn = true;
                                 valueOn = false;
-                                cfgMap.put(orderTemp.toString(), valueTemp.toString());//存储配置
+                                cfgMap.put(orderTemp.toString(), valueTemp.toString());
+                                //存储配置
                                 orderTemp.setLength(0);
                                 valueTemp.setLength(0);
                             } else if (valueOn) {
                                 orderOn = true;
                                 valueOn = false;
-                                cfgMap.put(orderTemp.toString(), valueTemp.toString());//存储配置
+                                cfgMap.put(orderTemp.toString(), valueTemp.toString());
+                                //存储配置
                                 orderTemp.setLength(0);
                                 valueTemp.setLength(0);
                             } else {
@@ -142,13 +148,16 @@ public class ConfigUtil {
                     }
                 }
             }
-            if (orderTemp.length() > 0 && !markOn) {//存储最后一个配置，此解析规则有bug，但不影响正常使用，暂时忽略
-                cfgMap.put(orderTemp.toString(), valueTemp.toString());//存储配置
+            if (orderTemp.length() > 0 && !markOn) {
+                //存储最后一个配置，此解析规则有bug，但不影响正常使用，暂时忽略
+                cfgMap.put(orderTemp.toString(), valueTemp.toString());
+                //存储配置
                 orderTemp.setLength(0);
                 valueTemp.setLength(0);
             }
-        } else {//如果没找到匹配{{}}的配置，尝试兼容1.5版本的(1:男,2:女)的值转换配置
-            Matcher converMatcher = commentConverPattern.matcher(comment);
+        } else {
+            //如果没找到匹配{{}}的配置，尝试兼容1.5版本的(1:男,2:女)的值转换配置
+            Matcher converMatcher = COMMENT_CONVER_PATTERN.matcher(comment);
             if (converMatcher.find()) {
                 String converCfg = converMatcher.group();
                 converCfg = converCfg.substring(1, converCfg.length() - 1);
@@ -167,7 +176,7 @@ public class ConfigUtil {
     public static List<Map> analysisConvertCfg(String comment) {
         comment = StringUtil.trim(comment);
         List<Map> converList = new ArrayList<Map>();
-        Matcher matcher = convertPattern.matcher(comment);
+        Matcher matcher = CONVERT_PATTERN.matcher(comment);
         if (matcher.find()) {
             String s = matcher.group();
             String[] split = s.split(",");
@@ -191,12 +200,13 @@ public class ConfigUtil {
      */
     public static String removeConfig(String comment) {
         comment = StringUtil.trim(comment);
-        Matcher matcher = commentCfgPattern.matcher(comment);
+        Matcher matcher = COMMENTCFG_PATTERN.matcher(comment);
         if (matcher.find()) {
             int indexOf = comment.lastIndexOf("{{");
             return comment.substring(0, indexOf);
-        } else {//如果没找到匹配{{}}的配置，尝试兼容1.5版本的(1:男,2:女)的值转换配置
-            Matcher converMatcher = commentConverPattern.matcher(comment);
+        } else {
+            //如果没找到匹配{{}}的配置，尝试兼容1.5版本的(1:男,2:女)的值转换配置
+            Matcher converMatcher = COMMENT_CONVER_PATTERN.matcher(comment);
             if (converMatcher.find()) {
                 int indexOf = comment.lastIndexOf("(");
                 return comment.substring(0, indexOf);

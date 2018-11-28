@@ -199,7 +199,7 @@ public class GeneratorCode {
             Object configVal = ObjectUtil.getChainBeanProperty(generatorInfo, cfgKey);
             if (configVal != null) {
                 String val = configVal.toString();
-                if (cfgKey.equals("packageName")) {//替换包为文件夹
+                if ("packageName".equals(cfgKey)) {//替换包为文件夹
                     val = val.replace(".", "/");
                 }
                 str = str.replace(group, val);
@@ -279,7 +279,7 @@ public class GeneratorCode {
                     String relativePath = templateFile.substring(path.length());//模板相对于fileLoader的路径
                     templateInfo.setTemplatePath(templateFile);
                     String fileSavePath = outputPath + FileUtil.addFrontSeparator(relativePath);
-                    if (!templateFile.substring(templateFile.length() - 1).equals("/")) {
+                    if (!"/".equals(templateFile.substring(templateFile.length() - 1))) {
                         Template template = groupTemplate.getTemplate(relativePath);
                         templateInfo.setTemplate(template);
                         fileSavePath = StringUtil.replaceEndStr(fileSavePath, templateFileSuffix, "");//清除模板后缀

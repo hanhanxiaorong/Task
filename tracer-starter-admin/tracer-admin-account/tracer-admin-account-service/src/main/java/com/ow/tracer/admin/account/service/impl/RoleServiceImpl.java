@@ -14,7 +14,10 @@ import com.ow.tracer.admin.account.service.IMenuService;
 import com.ow.tracer.admin.account.service.IRoleService;
 import com.ow.tracer.admin.account.service.IUserRoleService;
 import com.ow.tracer.admin.account.service.IUserService;
+import com.ow.tracer.common.base.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,8 +27,10 @@ import java.util.List;
  * @Date: 18-10-16 23:46
  * @Description:
  */
+
+@CacheConfig(cacheNames = "role")
 @Service("iRoleService")
-public class RoleServiceImpl  extends ServiceImpl<RoleMapper, Role> implements IRoleService {
+public class RoleServiceImpl  extends BaseServiceImpl<RoleMapper, Role> implements IRoleService {
     @Autowired
     IUserRoleService userRoleService;
     @Override
@@ -36,7 +41,6 @@ public class RoleServiceImpl  extends ServiceImpl<RoleMapper, Role> implements I
 
     @Override
     public boolean delRoleById(String id) {
-        System.out.println(id);
     QueryWrapper contion = new QueryWrapper();
     contion.eq("role_id",id);
         List<UserRole> roles = userRoleService.list(contion);

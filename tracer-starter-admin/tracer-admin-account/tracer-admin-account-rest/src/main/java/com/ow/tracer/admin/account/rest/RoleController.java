@@ -15,6 +15,8 @@ import com.ow.tracer.common.base.Result;
 import com.ow.tracer.common.util.Results;
 import com.ow.tracer.common.vo.AdminRole;
 import com.ow.tracer.common.vo.UserVO;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +45,7 @@ public class RoleController extends BaseController {
      * @return
      * @throws Exception
      */
+    @ApiOperation(value="获取角色分页数据",notes = "获取角色分页数据")
     @RequestMapping(value="/pageList")
     private Result pageList(Integer current) throws Exception{
         Page<Role> page = new Page<>();
@@ -56,6 +59,8 @@ public class RoleController extends BaseController {
      * @param row 角色数据
      * @return true/false
      */
+    @ApiOperation(value="新增角色数据",notes = "新增角色数据")
+    @ApiImplicitParam(name="row",value="角色实体",required = true,dataType = "Role",paramType ="path" )
     @PostMapping(value="/add")
     private Result add(@RequestBody Role row){
         boolean  boo = iRoleService.save(row);
@@ -66,6 +71,8 @@ public class RoleController extends BaseController {
      * @param id
      * @return 删除成功/失败
      */
+    @ApiOperation(value="根据ID删除角色数据",notes = "删除角色数据")
+    @ApiImplicitParam(name="id",value="角色ID",required = true,dataType = "String",paramType ="path" )
     @DeleteMapping("/{id}")
     private Result del(@PathVariable String id){
         System.out.println(id);
@@ -78,6 +85,8 @@ public class RoleController extends BaseController {
      * @param userVO 操作人对象
      * @return 操作成功或者失败状态
      */
+    @ApiOperation(value="修改角色",notes = "删除角色数据")
+    @ApiImplicitParam(name="id",value="角色ID",required = true,dataType = "String",paramType ="path" )
     @PutMapping("/edit")
     public Result edit(@RequestBody Role role , UserVO userVO){
         role.setUpdateDate(new Date());

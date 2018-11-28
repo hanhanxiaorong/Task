@@ -22,7 +22,9 @@ public class SecurityConfig extends ResourceServerConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/**")
-                .authenticated();
+                .authenticated()
+                .and()
+                .headers().frameOptions().disable();
     }
     /**
      * 配置解决 spring-security-oauth问题

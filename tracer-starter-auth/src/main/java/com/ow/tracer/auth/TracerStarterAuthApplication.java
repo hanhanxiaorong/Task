@@ -15,7 +15,6 @@ import org.springframework.web.filter.CorsFilter;
         "com.ow.tracer.common.config","com.ow.tracer.auth"})
 @MapperScan("com.ow.tracer.auth.mapper*")
 @EnableAuthorizationServer
-
 public class TracerStarterAuthApplication {
 
     public static void main(String[] args) {

@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl  extends ServiceImpl<UserServiceMapper, UserVO> implements UserService{
     @Autowired
     public UserServiceMapper userServiceMapper;
+    @Override
+
     public UserVO findUserByUsername(String username) {
         return userServiceMapper.selectUserVoByUsername(username);
     }

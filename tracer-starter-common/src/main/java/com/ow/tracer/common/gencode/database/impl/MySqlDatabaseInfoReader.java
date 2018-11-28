@@ -48,7 +48,7 @@ public class MySqlDatabaseInfoReader implements DatabaseInfoReader {
             ColumnInfo columnInfo = new ColumnInfo();
             String column = StringUtil.trim(map.get("COLUMN_NAME"));//数据库字段名
             String [] backB= column.split("_");
-             if(backB[0].equals("system")||column.equals("id")||column.equals("del_flag")||column.equals("version_number")||column.equals("create_date")||column.equals("create_by")||column.equals("update_by")||column.equals("update_date")||column.equals("tenant_id")||column.equals("enabled")){
+             if("system".equals(backB[0])||column.equals("id")||column.equals("del_flag")||column.equals("version_number")||column.equals("create_date")||column.equals("create_by")||column.equals("update_by")||column.equals("update_date")||column.equals("tenant_id")||column.equals("enabled")){
 
             }
             else{

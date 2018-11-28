@@ -99,6 +99,7 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isAccountNonLocked() {
         return !StringUtils.equals(CommonConstant.STATUS_LOCK, status);
     }
+    @Override
 
     public boolean isEnabled() {
         return StringUtils.equals(CommonConstant.STATUS_NORMAL, status);

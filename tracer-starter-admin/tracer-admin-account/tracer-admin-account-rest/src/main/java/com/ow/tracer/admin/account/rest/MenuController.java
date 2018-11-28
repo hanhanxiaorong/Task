@@ -13,6 +13,8 @@ import com.ow.tracer.common.base.Result;
 import com.ow.tracer.common.constats.CommonConstant;
 import com.ow.tracer.common.util.Results;
 import com.ow.tracer.common.vo.MenuVO;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,7 @@ public class MenuController extends BaseController {
      *
      * @return 当前用户的树形菜单
      */
+    @ApiOperation(value="获取当前用户的树形菜单集合",notes = "前端进入首页执行，根据用户角色查询的属性菜单集合")
     @GetMapping(value = "/userMenu")
     public List<MenuTree> userMenu() {
         // 获取符合条件得菜单
@@ -53,9 +56,10 @@ public class MenuController extends BaseController {
 
         return TreeUtil.bulid(menuTreeList, "-1");
     }
+    @ApiOperation(value="获取所有菜单",notes ="查询数据库菜单集合")
     @GetMapping(value="menuTree")
     public Result  menuTree(){
-            List<Menu> list = new ArrayList<>();
+        List<Menu> list = new ArrayList<>();
         QueryWrapper queryWrapper  = new QueryWrapper();
         list = menuService.list(queryWrapper);
         List<MenuTree> menuTreeList = new ArrayList<>();
@@ -66,6 +70,7 @@ public class MenuController extends BaseController {
 
         return Results.successWithData(TreeUtil.bulid(menuTreeList, "-1"), BaseEnums.SUCCESS.desc());
     }
+    @ApiOperation(value="获取符合自身权限的菜单",notes ="查询数据库菜单集合")
     @GetMapping(value="permessionTree")
     public Result  permessionTree(){
         // 获取符合条件得菜单
@@ -84,6 +89,8 @@ public class MenuController extends BaseController {
      * @param id 菜单编号
      * @return 菜单实体数据
      */
+    @ApiOperation(value="根据ID查询菜单详情",notes = "在数据库中查询某个菜单数据")
+    @ApiImplicitParam(name="id",value="菜单ID",required = true,dataType = "String",paramType ="path" )
     @GetMapping("/{id}")
     public Result getObj(@PathVariable String id){
         Menu menu = menuService.getById(id);
@@ -95,15 +102,17 @@ public class MenuController extends BaseController {
      * @param menu 菜单实体
      * @return success/false
      */
+    @ApiOperation(value="新增菜单数据",notes = "在数据库中增加一个菜单")
+    @ApiImplicitParam(name="menu",value="菜单实体",required = true,dataType = "Menu",paramType ="path" )
     @PostMapping("/add")
     public Result add(@RequestBody Menu menu) {
-
         boolean  boo = menuService.insertMenu(menu);
         return Results.successWithData(boo, BaseEnums.SUCCESS.desc());
     }
+    @ApiOperation(value="修改菜单数据",notes = "在数据库中修改一个菜单")
+    @ApiImplicitParam(name="menu",value="菜单实体",required = true,dataType = "Menu",paramType ="path" )
     @PutMapping("/edit")
     public Result edit (@RequestBody Menu menu){
-
         boolean boo = menuService.updateById(menu);
         return  Results.success();
     }
@@ -113,6 +122,8 @@ public class MenuController extends BaseController {
      * @param roleName 角色名称
      * @return 属性集合
      */
+    @ApiOperation(value="根据角色code查询下级菜单",notes = "在数据库中查询符合规则的菜单")
+    @ApiImplicitParam(name="roleName",value="角色code",required = true,dataType = "String",paramType ="path" )
     @GetMapping("/roleTree/{roleName}")
     public Result roleTree(@PathVariable String roleName) {
         List<MenuVO> menus = menuService.findMenuByRoleName(roleName);

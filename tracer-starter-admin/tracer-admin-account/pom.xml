@@ -19,11 +19,11 @@
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>com.ow</groupId>
-            <artifactId>tracer-starter-common</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+    <dependency>
+        <groupId>com.ow</groupId>
+        <artifactId>tracer-starter-common</artifactId>
+        <version>1.0</version>
+    </dependency>
+</dependencies>
 
 </project>

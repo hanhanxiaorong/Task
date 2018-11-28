@@ -200,4 +200,24 @@ public class MenuVO implements Serializable {
         }
         return super.equals(obj);
     }
+
+    @Override
+    public String toString() {
+        return "MenuVO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", permission='" + permission + '\'' +
+                ", url='" + url + '\'' +
+                ", method='" + method + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", icon='" + icon + '\'' +
+                ", path='" + path + '\'' +
+                ", component='" + component + '\'' +
+                ", sort=" + sort +
+                ", type='" + type + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", delFlag='" + delFlag + '\'' +
+                '}';
+    }
 }

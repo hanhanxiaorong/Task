@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.admin.account.dto.RoleMenu;
 import com.ow.tracer.admin.account.mapper.RoleMenuMapper;
 import com.ow.tracer.admin.account.service.IRoleMenuService;
+import com.ow.tracer.common.base.BaseServiceImpl;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
@@ -18,8 +20,9 @@ import java.util.List;
  * @date: 18-11-1 00:24
  * @description:
  */
+@CacheConfig(cacheNames = "roleMenu")
 @Service
-public class RoleMenuServiceImpl  extends ServiceImpl<RoleMenuMapper, RoleMenu> implements IRoleMenuService {
+public class RoleMenuServiceImpl  extends BaseServiceImpl<RoleMenuMapper, RoleMenu> implements IRoleMenuService {
     @Override
     public Boolean insertRoleMenus(String role, String roleId, String menuIds) {
         RoleMenu condition = new RoleMenu();

@@ -122,6 +122,7 @@ public class BaseDTO <T extends Model> extends Model<T> {
     public void set_operate(String _operate) {
         this._operate = _operate;
     }
+    @Override
 
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
