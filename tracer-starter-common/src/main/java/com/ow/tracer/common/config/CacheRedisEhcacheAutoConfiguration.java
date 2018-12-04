@@ -37,7 +37,6 @@ public class CacheRedisEhcacheAutoConfiguration extends CachingConfigurerSupport
 
     @Bean
     public RedisEhcacheCacheManager cacheManager(RedisTemplate<Object, Object> redisTemplate) {
-        System.out.println("执行了456456454");
         return new RedisEhcacheCacheManager(redisEhcacheProperties, redisTemplate);
     }
 

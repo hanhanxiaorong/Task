@@ -64,7 +64,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper,User> implements
         userInfo.setRoles(roles);
         Set<MenuVO> menuVoSet = new HashSet<>();
         for (String role : roles) {
-            List<MenuVO> menuVos = menuService.findMenuByRoleName(role);
+            List<MenuVO> menuVos = menuService.findMenuByRoleName(role,null);
             menuVoSet.addAll(menuVos);
         }
         Set<String> permissions = new HashSet<>();

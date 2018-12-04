@@ -30,7 +30,6 @@
         <module>tracer-starter-auth</module>
         <module>tracer-starter-file</module>
         <module>tracer-starter-redis</module>
-        <module>tracer-starter-business</module>
 
     </modules>
 

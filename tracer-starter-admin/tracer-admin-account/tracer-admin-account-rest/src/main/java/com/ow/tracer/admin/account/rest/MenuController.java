@@ -41,19 +41,17 @@ public class MenuController extends BaseController {
      */
     @ApiOperation(value="获取当前用户的树形菜单集合",notes = "前端进入首页执行，根据用户角色查询的属性菜单集合")
     @GetMapping(value = "/userMenu")
-    public List<MenuTree> userMenu() {
+    public List<MenuTree> userMenu(String type) {
         // 获取符合条件得菜单
         Set<MenuVO> all = new HashSet<>();
-        getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName)));
+        getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName,type)));
         List<MenuTree> menuTreeList = new ArrayList<>();
         all.forEach(menuVo -> {
             if (CommonConstant.MENU.equals(menuVo.getType())||"2".equals(menuVo.getType())) {
                 menuTreeList.add(new MenuTree(menuVo));
             }
         });
-        System.out.println(menuTreeList.size());
         CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
-
         return TreeUtil.bulid(menuTreeList, "-1");
     }
     @ApiOperation(value="获取所有菜单",notes ="查询数据库菜单集合")
@@ -75,7 +73,7 @@ public class MenuController extends BaseController {
     public Result  permessionTree(){
         // 获取符合条件得菜单
         Set<MenuVO> all = new HashSet<>();
-        getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName)));
+        getRole().forEach(roleName -> all.addAll(menuService.findMenuByRoleName(roleName,null)));
         List<MenuTree> menuTreeList = new ArrayList<>();
         all.forEach(menu -> {
             menuTreeList.add(new MenuTree(menu));
@@ -126,7 +124,7 @@ public class MenuController extends BaseController {
     @ApiImplicitParam(name="roleName",value="角色code",required = true,dataType = "String",paramType ="path" )
     @GetMapping("/roleTree/{roleName}")
     public Result roleTree(@PathVariable String roleName) {
-        List<MenuVO> menus = menuService.findMenuByRoleName(roleName);
+        List<MenuVO> menus = menuService.findMenuByRoleName(roleName,null);
         List<String> menuList = new ArrayList<>();
         for (MenuVO menuVo : menus) {
             menuList.add(menuVo.getId());

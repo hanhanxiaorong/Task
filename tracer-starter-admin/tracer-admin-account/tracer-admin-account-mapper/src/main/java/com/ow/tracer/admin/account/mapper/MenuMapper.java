@@ -19,5 +19,6 @@ public interface MenuMapper  extends Mapper<Menu> {
      * @param role 角色名称
      * @return 菜单列表
      */
-    List<MenuVO> findMenuByRoleName(@Param("role") String role);
+    List<MenuVO> findMenuByRoleName(@Param("role") String role,@Param("systemType") String systemType);
+
 }

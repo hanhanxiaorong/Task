@@ -11,12 +11,15 @@
 		<result column="parent_id" property="parentId" />
 		<result column="icon" property="icon" />
 		<result column="path" property="path" />
+		<result column="system_type" property="systemType" />
+
 		<result column="component" property="component" />
 		<result column="sort" property="sort" />
 		<result column="type" property="type" />
 		<result column="create_time" property="createTime" />
 		<result column="update_time" property="updateTime" />
 		<result column="del_flag" property="delFlag" />
+
 	</resultMap>
 
     <sql id="Base_Column_List">
@@ -49,7 +52,8 @@
         LEFT JOIN admin_menu ON admin_menu.id = admin_role_menu.menu_id
         WHERE
         admin_role.del_flag = 0
-        AND admin_menu.del_flag = 0
+		<if test="systemType != null and systemType != ''">     AND admin_menu.system_type=#{systemType}</if>
+		AND admin_menu.del_flag = 0
         AND admin_role.role_code = #{role}
         ORDER BY admin_menu.sort DESC
     </select>

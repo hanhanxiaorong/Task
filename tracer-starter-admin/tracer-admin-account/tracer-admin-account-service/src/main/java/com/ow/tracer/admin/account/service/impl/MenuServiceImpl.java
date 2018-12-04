@@ -30,9 +30,10 @@ public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implement
     IRoleMenuService roleMenuService;
 
     @Override
-    public List<MenuVO> findMenuByRoleName(String role) {
-        return sysMenuMapper.findMenuByRoleName(role);
+    public List<MenuVO> findMenuByRoleName(String role,String systemType) {
+        return sysMenuMapper.findMenuByRoleName(role,systemType);
     }
+
 
     @Override
     public boolean insertMenu(Menu menu) {

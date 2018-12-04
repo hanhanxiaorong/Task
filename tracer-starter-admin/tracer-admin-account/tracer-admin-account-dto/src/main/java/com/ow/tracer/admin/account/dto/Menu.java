@@ -56,6 +56,7 @@ public class Menu extends BaseDTO<Menu> {
      * 前端URL
      */
     private String path;
+    private String systemType;
 
     public String getName() {
         return name;
@@ -138,6 +139,14 @@ public class Menu extends BaseDTO<Menu> {
         this.path = path;
     }
 
+    public String getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(String systemType) {
+        this.systemType = systemType;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.getId();
@@ -155,6 +164,7 @@ public class Menu extends BaseDTO<Menu> {
                 ", component=" + component +
                 ", sort=" + sort +
                 ", type=" + type +
+                ",systemType="+systemType+
                 "}";
     }
 }

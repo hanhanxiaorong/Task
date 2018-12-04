@@ -6,6 +6,7 @@ import com.ow.tracer.auth.util.UserDetailsImpl;
 import com.ow.tracer.common.constats.CommonConstant;
 import com.ow.tracer.common.constats.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -27,6 +28,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -60,12 +63,13 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
     private RedisConnectionFactory redisConnectionFactory;
 
 
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        ClientDetailsServiceBuilder<InMemoryClientDetailsServiceBuilder>.ClientBuilder builder = clients.inMemory()
-                .withClient("client_1");
-        // 加密
-        builder.secret(passwordEncoder().encode("123456")).authorizedGrantTypes("client_credentials", "password", "refresh_token");
+        JdbcClientDetailsService clientDetailsService = new JdbcClientDetailsService(dataSource);
+        clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
+        clientDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
+        clients.withClientDetails(clientDetailsService);
     }
 
     @Override
@@ -78,7 +82,7 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
         endpoints
                 .tokenStore(redisTokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
-                .authenticationManager(authenticationManager)
+                .authenticationManager(authenticationManager())
                 .reuseRefreshTokens(false)
                 .userDetailsService(userDetailsService);
         endpoints.authenticationManager(authenticationManager())
@@ -88,10 +92,11 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-        //允许表单认证
-        oauthServer.allowFormAuthenticationForClients();
-        //允许check_token访问
-        oauthServer.checkTokenAccess("permitAll()");
+        oauthServer
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients();
+
     }
 
     @Bean
@@ -165,4 +170,5 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
         tokenStore.setPrefix(SecurityConstants.PIG_PREFIX);
         return tokenStore;
     }
+
 }

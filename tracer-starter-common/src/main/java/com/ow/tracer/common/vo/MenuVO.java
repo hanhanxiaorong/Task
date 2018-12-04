@@ -64,6 +64,7 @@ public class MenuVO implements Serializable {
      * 更新时间
      */
     private Date updateTime;
+    private String systemType;
     /**
      * 0--正常 1--删除
      */
@@ -181,6 +182,14 @@ public class MenuVO implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getSystemType() {
+        return systemType;
+    }
+
+    public void setSystemType(String systemType) {
+        this.systemType = systemType;
+    }
+
     @Override
     public int hashCode() {
         return id.hashCode();
@@ -218,6 +227,8 @@ public class MenuVO implements Serializable {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", delFlag='" + delFlag + '\'' +
+                ", systemType='" + systemType + '\'' +
+
                 '}';
     }
 }

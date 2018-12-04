@@ -17,6 +17,7 @@
 
 package com.ow.tracer.auth.config;
 
+import com.ow.tracer.common.vo.UserVO;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -31,8 +32,13 @@ import java.util.Map;
 public class TracerJwtAccessTokenConverter extends JwtAccessTokenConverter {
     @Override
     public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
+        String userName = authentication.getUserAuthentication().getName();
+        // 与登录时候放进去的UserDetail实现类一直查看link{SecurityConfiguration}
+        UserVO user = (UserVO) authentication.getUserAuthentication().getPrincipal();
         Map<String, Object> representation = (Map<String, Object>) super.convertAccessToken(token, authentication);
         representation.put("license", "made by pig");
+        representation.put("userName", userName);
+        representation.put("userId", user.getId());
         return representation;
     }
 
