@@ -1,11 +1,11 @@
-package com.hzf.${data.projectName}.${data.packageName}.${data.functionName}.service.impl;
+package com.ow.${data.projectName}.${data.packageName}.${data.functionName}.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.AbstractWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.${data.packageName}.${data.functionName}.dto.${data.className};
 import com.ow.tracer.${data.packageName}.${data.functionName}.mapper.${data.className}Mapper;
-import com.ow.tracer.${data.packageName}.${data.functionName}.service.${data.className}Service;
+import com.ow.tracer.${data.packageName}.${data.functionName}.service.I${data.className}Service;
 import com.ow.tracer.common.constats.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.List;
  * 创建时间:   [${date(),"yyyy-MM-dd HH:mm:ss"}]
  * 版本:       [v1.0]
  */
-\@Service()
+\@Service
 public class ${data.className}ServiceImpl extends ServiceImpl<${data.className}Mapper, ${data.className}> implements I${data.className}Service {
 
 

@@ -139,17 +139,18 @@ public class GeneratorCode {
      * @param generatorInfolist
      */
     private void processTemplate(List<GeneratorInfo> generatorInfolist) {
-          String  functionName="shop";//数据库表名前缀
-          String dbTableName="admin";//数据库表名前缀
+          String  functionName="";//数据库表名前缀
+          String dbTableName="";//数据库表名前缀
 
-          String moudelName="tracer"+"-"+dbTableName+"-"+functionName;//项目模块名
+          String moudelName="";//项目模块名
         List<TemplateInfo> templateInfoList = buildTemplateInfoList();//获取模板列表
         for (int i = 0; i < generatorInfolist.size(); i++) {
             GeneratorInfo generatorInfo = generatorInfolist.get(i);
+             moudelName="tracer"+"-"+generatorInfo.getPackageName()+"-"+generatorInfo.getFunctionName();//项目模块名
             Map valMap = new HashMap(1);
             valMap.put("data", generatorInfo);
             groupTemplate.setSharedVars(valMap);//设置模板共享变量
-            String path= GeoUtils.getPath("^(?!.*(admin)).*$");
+            String path= GeoUtils.getPath("^(?!.*("+generatorInfo.getPackageName()+")).*$",moudelName);
 
             for (int j = 0; j < templateInfoList.size(); j++) {
                 TemplateInfo templateInfo = templateInfoList.get(j);

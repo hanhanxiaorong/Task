@@ -57,11 +57,11 @@ public class UserController extends BaseController {
         return "order id : " + 12;
     }
     @GetMapping(value="/allUser")
-    public Result allUser(Integer current,UserVO userVO){
+    public Result allUser(Integer current,Integer size,UserVO userVO){
         System.out.println(userVO.getDeptId());
         Page page = new Page();
         page.setCurrent(current);
-        page.setSize(20);
+        page.setSize(size);
         IPage<UserVO> userVOIPage = iUserService.selectUserPage(page);
         return Results.successWithData(userVOIPage, BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }

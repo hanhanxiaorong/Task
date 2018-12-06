@@ -4,6 +4,7 @@ package com.ow.tracer.common.gen;
 
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import com.ow.tracer.common.config.GeneratorConfigUtils;
 import com.ow.tracer.common.file.FileGeneration;
 import com.ow.tracer.common.gencode.config.DatabaseConfig;
@@ -16,20 +17,25 @@ import java.util.regex.Pattern;
  * @author easy
  */
 public class GeoUtils {
-    //数据库表名前缀
-    private static String project="Tracer";
-    //数据库表名前缀
-    private static String dbTableName="admin";
-    //数据库表名前缀
-    private static String  functionName="shop";
-    //项目模块名
-    private static String moudelName="tracer"+"-"+dbTableName+"-"+functionName;
     public static void main(String[] args) {
-    FileGeneration.CreateFIle();;
+        getTable("admin_system","admin","account","tracer","admin");
+    }
 
-        //第二种 例:
+    /**
+     *  根据表名前缀生成整个模块，通常在项目初始化时生成。
+     * @param  groupId POM组织id 如com.ow
+     * @param prefix 表名前缀如admin_user prefix就等于admin
+     * @param modelName  子项目名称如tracer-admin-account modelName就等于admin
+     * @param functionName 子项目中的模块名称 如tracer-admin-account functionName就等于 account
+     * @param project  项目名前缀 如 tracer-admin-account project 就等于tracer
+     * @param superName 模块上级文件名，用于查找生成路径
+     */
+    public static void getTables(String groupId,String prefix,String  modelName,String functionName,String project,String  superName) {
+        String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
+        //创建文件夹
+        FileGeneration.CreateFIle(groupId,moudelName,project);
         String[] test2 = {"mapper","dto","rest","service"};
-        String path= GeoUtils.getPath("^(?!.*(admin)).*$");
+        String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
 
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
@@ -39,22 +45,45 @@ public class GeoUtils {
             generatorConfig.setProjectName(project);
             generatorConfig.setTemplateRoot(FileUtil.getParent(FileUtil.getAbsolutePath(""), 2) + "/src/main/resources/generator/defaultTemplate/SSM" );//使用~代表从classpath读取模板
             generatorConfig.setTemplateId("/${packageName}/"+test2[i]);
-            generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+dbTableName+"/"+functionName+"/"+test2[i]);
+            generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+modelName+"/"+functionName+"/"+test2[i]);
             DatabaseConfig databaseConfig = new DatabaseConfig();
             String dbName = "tracer";//数据库名
-            databaseConfig.setTablePrefix(dbTableName+"_%");
+            databaseConfig.setTablePrefix(prefix+"_%");
             databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/tracer?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
             databaseConfig.setDbName("tracer");//设置数据库名
             databaseConfig.setUsername("ruitu");
             databaseConfig.setPassword("ruI115tU");
-            GeneratorConfigUtils.batchgencode(generatorConfig,databaseConfig);
+            GeneratorConfigUtils.gencode(generatorConfig,databaseConfig);
 
         }
 
-
     }
 
-    public static  String getPath(String url){
+        public static void getTable(String dbTableName,String modelName,String functionName,String project,String  superName) {
+            String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
+            String[] test2 = {"mapper","dto","rest","service"};
+            String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
+
+        for(int i=0;i<test2.length;i++){
+            GeneratorConfig generatorConfig = new GeneratorConfig();
+            generatorConfig.setAuthor("江雪立");
+            generatorConfig.setPackageName(moudelName);
+            generatorConfig.setFunctionName(functionName);
+            generatorConfig.setProjectName(project);
+            generatorConfig.setTemplateRoot(FileUtil.getParent(FileUtil.getAbsolutePath(""), 2) + "/src/main/resources/generator/defaultTemplate/SSM" );//使用~代表从classpath读取模板
+            generatorConfig.setTemplateId("/${packageName}/"+test2[i]);
+            generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+modelName+"/"+functionName+"/"+test2[i]);
+            DatabaseConfig databaseConfig = new DatabaseConfig();
+            String dbName = "tracer";//数据库名
+            databaseConfig.setTableName(dbTableName);
+            databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/tracer?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
+            databaseConfig.setDbName("tracer");//设置数据库名
+            databaseConfig.setUsername("ruitu");
+            databaseConfig.setPassword("ruI115tU");
+            GeneratorConfigUtils.gencode(generatorConfig,databaseConfig);
+        }
+    }
+    public static  String getPath(String url,String moudelName){
 
         String path = "";
         String relativelyPath=System.getProperty("user.dir");

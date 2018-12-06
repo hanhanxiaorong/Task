@@ -30,7 +30,7 @@ public class GeneratorConfig {
     private String className;
     /**包名*/
     private String packageName;
-    /**包名*/
+    /**模块名*/
     private String functionName;
 
     private String projectName;

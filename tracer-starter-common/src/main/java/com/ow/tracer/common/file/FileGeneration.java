@@ -19,9 +19,12 @@ public class FileGeneration {
     /**使用的模板文件夹名称*/
     private static final String sourceTemplate = "sourceTemplate";
 
-    private static final String groupId = "com.ow";
+    private   static  String GROUP_ID ="";
 
-    private static final String artifactId = "tracer-admin-shop";
+    private  static   String ARTIFACT_ID= "";
+
+    private  static   String PROJECT_ID ="";
+
     /**
      * 源模板文件基础路径
      */
@@ -29,13 +32,15 @@ public class FileGeneration {
     /**
      * 目标文件基础路径
      */
-    private static final String targetBasePath =getProjectPath("^(?!.*(admin)).*$",3)+"/"+artifactId;
+    private static final String targetBasePath =getProjectPath("^(?!.*("+PROJECT_ID+")).*$",3)+"/"+ARTIFACT_ID;
 
     public static   void main(String[] args) {
         FileGeneration fileGeneration = new FileGeneration();
         fileGeneration.createFile(sourceBasePath);
     }
-    public static   void CreateFIle() {
+    public static   void CreateFIle(String groupId,String artifactId,String project) {
+        GROUP_ID=groupId;
+        ARTIFACT_ID=artifactId;
         FileGeneration fileGeneration = new FileGeneration();
         fileGeneration.createFile(sourceBasePath);
     }
@@ -73,11 +78,11 @@ public class FileGeneration {
 
     private String replacedSourceDirPath(String sourceDirPath) {
         String result = sourceDirPath
-                .replace(sourceBasePath + "/rest", targetBasePath + "/" + artifactId +  "-rest")
-                .replace(sourceBasePath + "/config", targetBasePath + "/" + artifactId + "-config")
-                .replace(sourceBasePath + "/service", targetBasePath + "/" + artifactId + "-service")
-                .replace(sourceBasePath + "/dto", targetBasePath + "/" + artifactId + "-dto")
-                .replace(sourceBasePath + "/mapper", targetBasePath + "/" + artifactId + "-mapper")
+                .replace(sourceBasePath + "/rest", targetBasePath + "/" + ARTIFACT_ID +  "-rest")
+                .replace(sourceBasePath + "/config", targetBasePath + "/" + ARTIFACT_ID + "-config")
+                .replace(sourceBasePath + "/service", targetBasePath + "/" + ARTIFACT_ID + "-service")
+                .replace(sourceBasePath + "/dto", targetBasePath + "/" + ARTIFACT_ID + "-dto")
+                .replace(sourceBasePath + "/mapper", targetBasePath + "/" + ARTIFACT_ID + "-mapper")
                 .replace(sourceBasePath, targetBasePath);
         return result;
     }
@@ -297,7 +302,7 @@ public class FileGeneration {
      * @return
      */
     private String getReplacedContent(String sourceContent){
-        String result = sourceContent.replace("${groupId}", groupId).replace("${artifactId}", artifactId);
+        String result = sourceContent.replace("${groupId}", GROUP_ID).replace("${artifactId}", ARTIFACT_ID);
 //		if ("sourceTemplate-client".equals(sourceTemplate)) {
 //			result = result.replace("${server-groupId}", serverGroupId).replace("${server-artifactId}", serverArtifactId);
 //		}

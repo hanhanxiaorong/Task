@@ -34,7 +34,6 @@ import java.util.*;
  * @Date: 18-9-10 21:56
  * @Description:
  */
-@CacheConfig(cacheNames = "user")
 @Service("iUserService")
 public class UserServiceImpl extends BaseServiceImpl<UserMapper,User> implements IUserService {
     @Autowired
