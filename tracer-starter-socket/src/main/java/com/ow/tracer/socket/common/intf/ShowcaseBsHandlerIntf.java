@@ -1,0 +1,23 @@
+package com.ow.tracer.socket.common.intf;
+
+import org.tio.core.ChannelContext;
+import com.ow.tracer.socket.common.ShowcasePacket;
+
+/**
+ * 业务处理器接口
+ * @author tanyaowu
+ * 2017年3月27日 下午9:52:42
+ */
+public interface ShowcaseBsHandlerIntf {
+
+	/**
+	 *
+	 * @param packet
+	 * @param channelContext
+	 * @return
+	 * @throws Exception
+	 * @author tanyaowu
+	 */
+	public Object handler(ShowcasePacket packet, ChannelContext channelContext) throws Exception;
+
+}
