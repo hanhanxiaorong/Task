@@ -50,6 +50,7 @@ public interface Type {
 	/**
 	 * TEST
 	 */
-	short HARDWARE = 1;
+	short HARDWARE = 255;
+
 
 }

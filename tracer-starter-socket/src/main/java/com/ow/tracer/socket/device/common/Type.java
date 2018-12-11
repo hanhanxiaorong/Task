@@ -10,11 +10,14 @@ public interface Type {
 	/**
 	 * 登录消息请求
 	 */
-	short TEST_REQ = 1;
+	short TEST_REQ = 4;
 	/**
 	 * 登录消息响应
 	 */
 	short TEST_RESP = 2;
 
-
+	/**
+	 * 心跳消息请求
+	 */
+	short HERAT_REQ = 99;
 }

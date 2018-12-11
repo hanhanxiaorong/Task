@@ -31,13 +31,10 @@ public abstract class ShowcaseAbsAioHandler implements AioHandler {
 		//position的值不一定是0，但是
 		//消息类型
 		byte type = buffer.get();
-		System.out.println("type是"+type);
 		int bodyLength = buffer.getInt();
-
 		if (bodyLength < 0) {
 			throw new AioDecodeException("bodyLength [" + bodyLength + "] is not right, remote:" + channelContext.getClientNode());
 		}
-
 		int neededLength = ShowcasePacket.HEADER_LENGHT + bodyLength;
 		int test = readableLength - neededLength;
 		if (test < 0) // 不够消息体长度(剩下的buffe组不了消息体)

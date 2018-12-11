@@ -41,7 +41,7 @@ public class DeviceServerAioHandler extends DeviceAbsAioHandler implements Serve
 	public void handler(Packet packet, ChannelContext channelContext) throws Exception {
 		DevicePacket showcasePacket = (DevicePacket) packet;
 		short type = showcasePacket.getType();
-		System.out.println(type);
+
 		AbsDeviceBsHandler<?> showcaseBsHandler = handlerMap.get(type);
 		if (showcaseBsHandler == null) {
 			log.error("{}, 找不到处理类，type:{}", channelContext, type);

@@ -15,11 +15,10 @@ import java.io.IOException;
  * 2017年3月27日 上午12:16:31
  */
 public class DeviceServerStarter {
-	static ServerAioHandler aioHandler = new ShowcaseServerAioHandler();
-	static ServerAioListener aioListener = new ShowcaseServerAioListener();
+	static DeviceServerAioHandler aioHandler = new DeviceServerAioHandler();
+	static DeviceServerAioListener aioListener = new DeviceServerAioListener();
 	static ServerGroupContext serverGroupContext = new ServerGroupContext(aioHandler, aioListener);
 	static TioServer tioServer = new TioServer(serverGroupContext); //可以为空
-
 	static String serverIp = null;
 	static int serverPort = com.ow.tracer.socket.common.Const.PORT;
 
