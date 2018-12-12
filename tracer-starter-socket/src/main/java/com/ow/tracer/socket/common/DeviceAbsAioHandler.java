@@ -1,7 +1,5 @@
-package com.ow.tracer.socket.device.common;
+package com.ow.tracer.socket.common;
 
-import cn.hutool.core.convert.Convert;
-import com.ow.tracer.socket.common.ShowcasePacket;
 import org.tio.core.ChannelContext;
 import org.tio.core.GroupContext;
 import org.tio.core.exception.AioDecodeException;
@@ -17,6 +15,7 @@ import java.util.Arrays;
  * @description:
  */
 public abstract class DeviceAbsAioHandler implements AioHandler {
+
     @Override
     public DevicePacket decode(ByteBuffer byteBuffer, int limit, int position, int readableLength, ChannelContext channelContext) throws AioDecodeException {
         System.out.println(Arrays.toString(byteBuffer.array()));
@@ -26,47 +25,39 @@ public abstract class DeviceAbsAioHandler implements AioHandler {
             return null;
         }
         byte [] identifier= new byte[2];
-        byte [] version= new byte[2];
-        byte [] ipaddress= new byte[4];
+//        short identifier = byteBuffer.getShort();
         byte [] number = new byte[10];
-        byteBuffer.get(identifier,0,2);
+         byteBuffer.get(identifier,0,2);
         if(identifier.length>0){
+            System.out.println(identifier);
             imPacket.setIdentifier(identifier);
         }else{
             throw new AioDecodeException("bodyLength [" + identifier + "] is not right, remote:" + channelContext.getClientNode());
         }
-        byteBuffer.get(version);
-        byteBuffer.get(ipaddress);
+       byte version = byteBuffer.get();
+        int ip =    byteBuffer.getInt();
+        System.out.println(IPv4Util.intToIp(ip));
         byteBuffer.get(number);
-        byte l1  = byteBuffer.get();
-        byte l2  = byteBuffer.get();
-        int length = l1+l2;
-        byte t1 = byteBuffer.get();
-        byte t2 = byteBuffer.get();
-        int type = t1+t2;
+        byte length  = byteBuffer.get();
+        byte type= byteBuffer.get();
         if (length < 0) {
             throw new AioDecodeException("bodyLength [" + length + "] is not right, remote:" + channelContext.getClientNode());
         }
         int neededLength = DevicePacket.HEADER_LENGHT + length;
         int test = readableLength - neededLength;
-        System.out.println("取到消息总长度="+readableLength+",消息中长度标识传输的位数为"+length+",+消息头+表示位数="+neededLength+";");
-
         if (test < 0) // 不够消息体长度(剩下的buffe组不了消息体)
         {
-            System.out.println("消息长度不够");
             return null;
         } else {
-            imPacket.setType((short) type);
+            imPacket.setType(type);
             if (length > 0) {
                 byte[] dst = new byte[length];
                 byteBuffer.get(dst);
                 imPacket.setData(dst);
                 imPacket.setNumber(number);
-                imPacket.setLenght((short)length);
+                imPacket.setLenght(length);
                 imPacket.setVersion(version);
-                imPacket.setIpAddress(ipaddress);
-
-
+                imPacket.setIpAddress(IPv4Util.intToIp(ip));
             }
 
             return imPacket;
@@ -88,14 +79,13 @@ public abstract class DeviceAbsAioHandler implements AioHandler {
         if (body != null) {
             bodyLen = (short) body.length;
         }
-
         //总长度是消息头的长度+消息体的长度
         int allLen = DevicePacket.HEADER_LENGHT +bodyLen;
         ByteBuffer buffer = ByteBuffer.allocate(allLen);
         buffer.order(groupContext.getByteOrder());
         buffer.put(devicePacket.getIdentifier());
         buffer.put(devicePacket.getVersion());
-        buffer.put(devicePacket.getIpAddress());
+        buffer.put(IPv4Util.ipToBytesByInet(devicePacket.getIpAddress()));
         if(devicePacket.getNumber()==null){
             byte [] number = {00,00};
             buffer.put(number);
@@ -105,14 +95,12 @@ public abstract class DeviceAbsAioHandler implements AioHandler {
         //写入消息体长度
         buffer.putShort(bodyLen);
         //写入消息类型
-
-        buffer.putShort(devicePacket.getType());
+        buffer.put(devicePacket.getType());
 //		System.out.println(Arrays.toString(buffer.array()));
         //写入消息体
         if (body != null) {
             buffer.put(body);
         }
-        System.out.println(Arrays.toString(buffer.array()));
 
         return buffer;
     }

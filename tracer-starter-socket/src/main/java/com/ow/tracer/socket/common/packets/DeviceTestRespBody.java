@@ -4,18 +4,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 进群响应
+ * 登录响应
  * @author tanyaowu
- * 2017年3月25日 上午8:22:06
+ * 2017年3月25日 上午8:39:02
  */
-public class JoinGroupRespBody extends BaseBody {
+public class DeviceTestRespBody extends BaseBody {
 	public static interface Code {
 		Integer SUCCESS = 1;
 		Integer FAIL = 2;
 	}
 
 	@SuppressWarnings("unused")
-	private static Logger log = LoggerFactory.getLogger(JoinGroupRespBody.class);
+	private static Logger log = LoggerFactory.getLogger(DeviceTestRespBody.class);
 
 	/**
 	 * @param args
@@ -26,19 +26,15 @@ public class JoinGroupRespBody extends BaseBody {
 
 	}
 
-	//进群结果，见Code接口，showcase为了简单易懂，都会返回成功
 	private Integer code;
 
-	//如果进群失败，需要提供一下msg
 	private String msg;
-
-	private String group;
 
 	/**
 	 *
 	 * @author tanyaowu
 	 */
-	public JoinGroupRespBody() {
+	public DeviceTestRespBody() {
 
 	}
 
@@ -50,18 +46,13 @@ public class JoinGroupRespBody extends BaseBody {
 	}
 
 	/**
-	 * @return the group
-	 */
-	public String getGroup() {
-		return group;
-	}
-
-	/**
 	 * @return the msg
 	 */
 	public String getMsg() {
 		return msg;
 	}
+
+
 
 	/**
 	 * @param code the code to set
@@ -71,16 +62,10 @@ public class JoinGroupRespBody extends BaseBody {
 	}
 
 	/**
-	 * @param group the group to set
-	 */
-	public void setGroup(String group) {
-		this.group = group;
-	}
-
-	/**
 	 * @param msg the msg to set
 	 */
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+
 }

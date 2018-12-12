@@ -1,6 +1,4 @@
-package com.ow.tracer.socket.device.common.packets;
-
-import com.ow.tracer.socket.common.packets.BaseBody;
+package com.ow.tracer.socket.common.packets;
 
 /**
  * @auther: Easy

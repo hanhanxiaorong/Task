@@ -1,13 +1,10 @@
 package com.ow.tracer.socket.device.service.handler;
 
 import cn.hutool.core.convert.Convert;
-import com.ow.tracer.socket.common.ShowcasePacket;
+import com.ow.tracer.socket.common.DevicePacket;
 import com.ow.tracer.socket.common.Type;
-import com.ow.tracer.socket.common.packets.GroupMsgReqBody;
-import com.ow.tracer.socket.device.common.DevicePacket;
-import com.ow.tracer.socket.device.common.intf.AbsDeviceBsHandler;
-import com.ow.tracer.socket.device.common.packets.DeviceTestReqBody;
-import com.ow.tracer.socket.device.common.packets.DeviceTestRespBody;
+import com.ow.tracer.socket.common.intf.AbsDeviceBsHandler;
+import com.ow.tracer.socket.common.packets.DeviceTestReqBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.ChannelContext;

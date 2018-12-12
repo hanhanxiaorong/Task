@@ -1,15 +1,11 @@
 package com.ow.tracer.socket.device.service;
 
-import com.ow.tracer.socket.common.ShowcaseAbsAioHandler;
-import com.ow.tracer.socket.common.ShowcasePacket;
-import com.ow.tracer.socket.common.intf.AbsShowcaseBsHandler;
-import com.ow.tracer.socket.device.client.handler.DeviceTestRespHandler;
-import com.ow.tracer.socket.device.common.DeviceAbsAioHandler;
-import com.ow.tracer.socket.device.common.DevicePacket;
-import com.ow.tracer.socket.device.common.Type;
-import com.ow.tracer.socket.device.common.intf.AbsDeviceBsHandler;
+
+import com.ow.tracer.socket.common.DeviceAbsAioHandler;
+import com.ow.tracer.socket.common.DevicePacket;
+import com.ow.tracer.socket.common.Type;
+import com.ow.tracer.socket.common.intf.AbsDeviceBsHandler;
 import com.ow.tracer.socket.device.service.handler.DeviceTestRepHandler;
-import com.ow.tracer.socket.server.handler.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.ChannelContext;
@@ -40,7 +36,7 @@ public class DeviceServerAioHandler extends DeviceAbsAioHandler implements Serve
 	@Override
 	public void handler(Packet packet, ChannelContext channelContext) throws Exception {
 		DevicePacket showcasePacket = (DevicePacket) packet;
-		short type = showcasePacket.getType();
+		int type = showcasePacket.getType();
 
 		AbsDeviceBsHandler<?> showcaseBsHandler = handlerMap.get(type);
 		if (showcaseBsHandler == null) {

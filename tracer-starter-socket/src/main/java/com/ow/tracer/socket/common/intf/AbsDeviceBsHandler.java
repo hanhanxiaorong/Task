@@ -1,9 +1,8 @@
-package com.ow.tracer.socket.device.common.intf;
+package com.ow.tracer.socket.common.intf;
 
 import com.ow.tracer.socket.common.Const;
-
+import com.ow.tracer.socket.common.DevicePacket;
 import com.ow.tracer.socket.common.packets.BaseBody;
-import com.ow.tracer.socket.device.common.DevicePacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.ChannelContext;

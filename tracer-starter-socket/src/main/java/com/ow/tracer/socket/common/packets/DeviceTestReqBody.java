@@ -1,6 +1,5 @@
-package com.ow.tracer.socket.device.common.packets;
+package com.ow.tracer.socket.common.packets;
 
-import com.ow.tracer.socket.common.packets.BaseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

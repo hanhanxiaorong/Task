@@ -1,6 +1,6 @@
-package com.ow.tracer.socket.device.common.intf;
+package com.ow.tracer.socket.common.intf;
 
-import com.ow.tracer.socket.device.common.DevicePacket;
+import com.ow.tracer.socket.common.DevicePacket;
 import org.tio.core.ChannelContext;
 
 /**
@@ -10,5 +10,5 @@ import org.tio.core.ChannelContext;
  */
 public interface DeviceBsHandlerIntf {
 
-    public Object handler(DevicePacket devicePacket, ChannelContext channelContext ) throws Exception;
+    public Object handler(DevicePacket devicePacket, ChannelContext channelContext) throws Exception;
 }
