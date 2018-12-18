@@ -146,7 +146,8 @@ public class GeneratorCode {
         List<TemplateInfo> templateInfoList = buildTemplateInfoList();//获取模板列表
         for (int i = 0; i < generatorInfolist.size(); i++) {
             GeneratorInfo generatorInfo = generatorInfolist.get(i);
-             moudelName="tracer"+"-"+generatorInfo.getPackageName()+"-"+generatorInfo.getFunctionName();//项目模块名
+            moudelName="tracer"+"-"+generatorInfo.getPackageName()+"-"+generatorInfo.getFunctionName();//项目模块名
+            System.out.println(generatorInfo.getProjectName());
             Map valMap = new HashMap(1);
             valMap.put("data", generatorInfo);
             groupTemplate.setSharedVars(valMap);//设置模板共享变量
@@ -155,13 +156,15 @@ public class GeneratorCode {
             for (int j = 0; j < templateInfoList.size(); j++) {
                 TemplateInfo templateInfo = templateInfoList.get(j);
                 String outputPath = templateInfo.getOutputPath();
+                System.out.println(path);
                 if(outputPath.indexOf("sqlmap")!=-1){
                     String relativelyPath=System.getProperty("user.dir");
                     outputPath=path+"/"+moudelName+"-mapper"+"/src/main/resources/mapper/${className}Mapper.xml";
                 }
-
+                System.out.println(outputPath);
                 outputPath = replaceConfigVal(outputPath, generatorInfo);
                 File outFile = new File(outputPath);
+                System.out.println(outFile);
                 boolean mkdirs = FileUtil.mkdirs(outFile);
                 if (!mkdirs) {
                     throw new RuntimeException("无法创建目录：" + outputPath + "，请修改目录权限允许写入或换一个文件输出路径。");
@@ -397,7 +400,7 @@ public class GeneratorCode {
                     } else {
                         gInfo.setDate(generatorConfig.getDate());
                     }
-                    gInfo.setPackageName(backB[0]);
+                    gInfo.setPackageName(generatorConfig.getPackageName());
                     gInfo.setProjectName(generatorConfig.getProjectName());
                     gInfo.setFunctionName(generatorConfig.getFunctionName());
                     gInfo.setSequence(i+1);

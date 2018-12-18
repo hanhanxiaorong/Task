@@ -18,7 +18,15 @@ import java.util.regex.Pattern;
  */
 public class GeoUtils {
     public static void main(String[] args) {
-        getTable("admin_system","admin","account","tracer","admin");
+
+//    getTables("com.ow",
+//             "oauth",
+//             "shop",
+//             "oauth",
+//                "tracer","shop",2
+//      );
+        getTable("admin_system","shop","oauth","tracer","shop");
+
     }
 
     /**
@@ -30,17 +38,17 @@ public class GeoUtils {
      * @param project  项目名前缀 如 tracer-admin-account project 就等于tracer
      * @param superName 模块上级文件名，用于查找生成路径
      */
-    public static void getTables(String groupId,String prefix,String  modelName,String functionName,String project,String  superName) {
+    public static void getTables(String groupId,String prefix,String  modelName,String functionName,String project,String  superName,int type) {
         String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
         //创建文件夹
-        FileGeneration.CreateFIle(groupId,moudelName,project);
+        FileGeneration.CreateFIle(groupId,moudelName,superName,type);
         String[] test2 = {"mapper","dto","rest","service"};
         String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
 
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setAuthor("江雪立");
-            generatorConfig.setPackageName(moudelName);
+            generatorConfig.setPackageName(modelName);
             generatorConfig.setFunctionName(functionName);
             generatorConfig.setProjectName(project);
             generatorConfig.setTemplateRoot(FileUtil.getParent(FileUtil.getAbsolutePath(""), 2) + "/src/main/resources/generator/defaultTemplate/SSM" );//使用~代表从classpath读取模板
@@ -49,11 +57,11 @@ public class GeoUtils {
             DatabaseConfig databaseConfig = new DatabaseConfig();
             String dbName = "tracer";//数据库名
             databaseConfig.setTablePrefix(prefix+"_%");
-            databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/tracer?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
+            databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/" + dbName + "?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
             databaseConfig.setDbName("tracer");//设置数据库名
             databaseConfig.setUsername("ruitu");
             databaseConfig.setPassword("ruI115tU");
-            GeneratorConfigUtils.gencode(generatorConfig,databaseConfig);
+            GeneratorConfigUtils.batchgencode(generatorConfig,databaseConfig);
 
         }
 
@@ -63,11 +71,11 @@ public class GeoUtils {
             String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
             String[] test2 = {"mapper","dto","rest","service"};
             String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
-
+            System.out.println(path);
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setAuthor("江雪立");
-            generatorConfig.setPackageName(moudelName);
+            generatorConfig.setPackageName(modelName);
             generatorConfig.setFunctionName(functionName);
             generatorConfig.setProjectName(project);
             generatorConfig.setTemplateRoot(FileUtil.getParent(FileUtil.getAbsolutePath(""), 2) + "/src/main/resources/generator/defaultTemplate/SSM" );//使用~代表从classpath读取模板
@@ -87,11 +95,9 @@ public class GeoUtils {
 
         String path = "";
         String relativelyPath=System.getProperty("user.dir");
-
+        System.out.println(relativelyPath);
         File file=new File(relativelyPath);
         File[] tempList = file.listFiles();
-
-
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) { }
             if (tempList[i].isDirectory()) {

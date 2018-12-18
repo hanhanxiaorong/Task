@@ -10,6 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages = {
         "com.ow.tracer.common.config", "com.ow.tracer.common.resolver","com.ow.tracer.file.api"})
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+
 public class TracerFileRestApplication {
 
     public static void main(String[] args) {

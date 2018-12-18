@@ -19,7 +19,7 @@ public class MavenMoudelAntUtil {
 
     private static final String groupId = "com.ow";
 
-    private static final String artifactId = "tracer-starter-shop";
+    private static final String artifactId = "tracer-starter-system";
 
     /**在创建hessian调用客户端应用的时候才会使用*/
 //	private static final String serverGroupId = "com.zhaogang.pricesoa";

@@ -21,7 +21,7 @@ public class SecurityConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**")
+                .antMatchers("/user/**")
                 .authenticated()
                 .and()
                 .headers().frameOptions().disable();

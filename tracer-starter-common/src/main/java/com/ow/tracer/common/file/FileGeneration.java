@@ -19,9 +19,9 @@ public class FileGeneration {
     /**使用的模板文件夹名称*/
     private static final String sourceTemplate = "sourceTemplate";
 
-    private   static  String GROUP_ID ="";
+    private   static  String GROUP_ID ="com.ow";
 
-    private  static   String ARTIFACT_ID= "";
+    private  static   String ARTIFACT_ID= "tracer-starter-system";
 
     private  static   String PROJECT_ID ="";
 
@@ -32,15 +32,14 @@ public class FileGeneration {
     /**
      * 目标文件基础路径
      */
-    private static final String targetBasePath =getProjectPath("^(?!.*("+PROJECT_ID+")).*$",3)+"/"+ARTIFACT_ID;
+    private static  String targetBasePath ="";
 
-    public static   void main(String[] args) {
-        FileGeneration fileGeneration = new FileGeneration();
-        fileGeneration.createFile(sourceBasePath);
-    }
-    public static   void CreateFIle(String groupId,String artifactId,String project) {
+    public static   void CreateFIle(String groupId,String artifactId,String supName,int type) {
         GROUP_ID=groupId;
         ARTIFACT_ID=artifactId;
+        PROJECT_ID=supName;
+        targetBasePath=getProjectPath("^(?!.*("+PROJECT_ID+")).*$",3,type)+"/"+ARTIFACT_ID;
+
         FileGeneration fileGeneration = new FileGeneration();
         fileGeneration.createFile(sourceBasePath);
     }
@@ -59,7 +58,6 @@ public class FileGeneration {
                 String sourceAbsolutePath = file.getAbsolutePath();
                 String sourceFileName = null;
                 String sourceDirPath = getReplacedSourceDirPath(sourceAbsolutePath, false, sourceFileName);
-
                 String targetDirPath = getReplacedTargetDirPath(sourceAbsolutePath, sourceDirPath, sourceFileName, false);
                 makeTargetDirectory(targetDirPath);
                 createFile(sourceDirPath);
@@ -77,6 +75,8 @@ public class FileGeneration {
     }
 
     private String replacedSourceDirPath(String sourceDirPath) {
+
+
         String result = sourceDirPath
                 .replace(sourceBasePath + "/rest", targetBasePath + "/" + ARTIFACT_ID +  "-rest")
                 .replace(sourceBasePath + "/config", targetBasePath + "/" + ARTIFACT_ID + "-config")
@@ -207,12 +207,15 @@ public class FileGeneration {
         }
         return sourceDirPath;
     }
-    public static  String getProjectPath(String url,int level){
+    public static  String getProjectPath(String url,int level,int type){
 
         String path = "";
+        if(type==1){
+            path=FileUtil.getParent(FileUtil.getAbsolutePath(""), level);
 
+        }else{
         File[] tempList = FileUtil.ls(FileUtil.getParent(FileUtil.getAbsolutePath(""), level));
-        ;
+
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) { }
             if (tempList[i].isDirectory()) {
@@ -222,9 +225,11 @@ public class FileGeneration {
                 }
             }
         }
+        }
         return path;
     }
     public static boolean StringMatchRule(String souce, String regex) {
+
         boolean result = false;
         if (regex != null && souce != null) {
             result = Pattern.matches(regex, souce);
