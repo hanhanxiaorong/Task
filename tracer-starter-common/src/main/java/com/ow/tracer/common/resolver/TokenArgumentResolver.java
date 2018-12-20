@@ -9,7 +9,7 @@
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
+ * Neither the name of the tracer_4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  * Author: easy (wangiegie@gmail.com)
@@ -20,6 +20,7 @@ package com.ow.tracer.common.resolver;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
+import com.ow.tracer.common.util.UserUtils;
 import com.ow.tracer.common.vo.AdminRole;
 import com.ow.tracer.common.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,8 +80,10 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
             return null;
         } else {
         }
+        String id = UserUtils.getUserId(request);
         UserVO userVO = new UserVO();
         userVO.setUserName(username);
+        userVO.setId(id);
         List<AdminRole> sysRoleList = new ArrayList<>();
         Arrays.stream(roles.split(",")).forEach(role -> {
             AdminRole sysRole = new AdminRole();

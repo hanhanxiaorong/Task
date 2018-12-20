@@ -9,7 +9,7 @@
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
+ * Neither the name of the tracer_4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  * Author: easy (wangiegie@gmail.com)
@@ -25,7 +25,7 @@ public interface SecurityConstants {
     /**
      * 前缀
      */
-    String PIG_PREFIX = "pig_";
+    String TRACER__PREFIX = "tracer__";
     /**
      * 用户信息头
      */
@@ -38,7 +38,7 @@ public interface SecurityConstants {
     /**
      * 项目的license
      */
-    String PIG_LICENSE = "made by pig";
+    String TRACER__LICENSE = "made by tracer";
     /**
      * 基础角色
      */

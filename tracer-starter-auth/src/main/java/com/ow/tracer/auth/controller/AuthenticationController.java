@@ -9,7 +9,7 @@
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
+ * Neither the name of the tracer_4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  * Author: lengleng (wangiegie@gmail.com)
@@ -18,6 +18,7 @@
 package com.ow.tracer.auth.controller;
 
 
+import com.ow.tracer.common.base.BaseController;
 import com.ow.tracer.common.constats.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,7 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/authentication")
-public class AuthenticationController {
+public class AuthenticationController extends BaseController {
     @Autowired
     @Qualifier("consumerTokenServices")
     private ConsumerTokenServices consumerTokenServices;
@@ -47,6 +48,8 @@ public class AuthenticationController {
      */
     @GetMapping("/require")
     public ModelAndView require() {
+        System.out.println(1234);
+
         return new ModelAndView("ftl/login");
     }
 

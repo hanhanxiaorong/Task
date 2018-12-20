@@ -14,11 +14,11 @@ public class DeviceReadPacket extends Packet {
     public static final String CHARSET = "utf-8";
     //数组头
     private byte[] identifier;//2
-    private byte  version;//2
+    private byte  version;//1
     private String  ipAddress;//4
     private byte[] number;//10
-    private byte lenght;//2
-    private byte type;//2
+    private byte lenght;//1
+    private byte type;//1
 
     private byte[]data;//
 

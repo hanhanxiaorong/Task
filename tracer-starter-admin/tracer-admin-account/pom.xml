@@ -15,7 +15,6 @@
         <module>tracer-admin-account-service</module>
         <module>tracer-admin-account-dto</module>
         <module>tracer-admin-account-rest</module>
-
     </modules>
 
     <dependencies>

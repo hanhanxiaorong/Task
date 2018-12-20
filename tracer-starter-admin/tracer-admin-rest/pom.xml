@@ -13,7 +13,7 @@
 
     <parent>
         <groupId>com.ow</groupId>
-        <artifactId>tracer</artifactId>
+        <artifactId>tracer-starter-admin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

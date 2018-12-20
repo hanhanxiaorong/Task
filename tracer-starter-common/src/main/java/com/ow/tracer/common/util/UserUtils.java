@@ -9,7 +9,7 @@
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
+ * Neither the name of the tracer_4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  * Author: easy (wangiegie@gmail.com)
@@ -58,11 +58,11 @@ public class UserUtils {
      * @param httpServletRequest
      * @return 用户ID
      */
-    public static Integer getUserId(HttpServletRequest httpServletRequest) {
+    public static String getUserId(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
         String key = Base64.getEncoder().encodeToString(CommonConstant.SIGN_KEY.getBytes());
         Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
-        Integer userId = (Integer) claims.get("userId");
+        String userId = (String) claims.get("userId");
         return userId;
     }
 

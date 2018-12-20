@@ -9,7 +9,7 @@
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
+ * Neither the name of the tracer_4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  * Author: easy (wangiegie@gmail.com)
@@ -35,7 +35,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetailsImpl loadUserByUsername(String username) throws UsernameNotFoundException {
         UserVO userVo = userService.findUserByUsername(username);
-        System.out.println(userVo.getUserName());
         return new UserDetailsImpl(userVo);
     }
 }

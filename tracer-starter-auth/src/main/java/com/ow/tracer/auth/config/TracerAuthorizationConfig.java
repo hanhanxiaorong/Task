@@ -5,11 +5,13 @@ import com.ow.tracer.auth.service.impl.UserDetailServiceImpl;
 import com.ow.tracer.auth.util.UserDetailsImpl;
 import com.ow.tracer.common.constats.CommonConstant;
 import com.ow.tracer.common.constats.SecurityConstants;
+import com.ow.tracer.common.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,6 +36,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -138,12 +141,14 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
      */
     @Bean
     public TokenEnhancer tokenEnhancer() {
+
         return (accessToken, authentication) -> {
             final Map<String, Object> additionalInfo = new HashMap<>(2);
-            additionalInfo.put("license", SecurityConstants.PIG_LICENSE);
+            additionalInfo.put("license", SecurityConstants.TRACER__LICENSE);
             UserDetailsImpl user = (UserDetailsImpl) authentication.getUserAuthentication().getPrincipal();
             if (user != null) {
                 additionalInfo.put("userId", user.getUserId());
+                additionalInfo.put("userDd", user.getUserId());
             }
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;
@@ -151,10 +156,10 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        TracerJwtAccessTokenConverter jwtAccessTokenConverter = new TracerJwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey(CommonConstant.SIGN_KEY);
-        return jwtAccessTokenConverter;
+    public TokenEnhancer jwtAccessTokenConverter() {
+        TracerJwtAccessTokenConverter converter = new TracerJwtAccessTokenConverter();
+        converter.setSigningKey(CommonConstant.SIGN_KEY);
+        return converter;
     }
     /**
      * tokenstore 定制化处理
@@ -167,7 +172,7 @@ public class TracerAuthorizationConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public TokenStore redisTokenStore() {
         TracerRedisTokenStore tokenStore = new TracerRedisTokenStore(redisConnectionFactory);
-        tokenStore.setPrefix(SecurityConstants.PIG_PREFIX);
+        tokenStore.setPrefix(SecurityConstants.TRACER__PREFIX);
         return tokenStore;
     }
 
