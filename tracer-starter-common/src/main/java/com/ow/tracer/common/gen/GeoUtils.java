@@ -67,6 +67,14 @@ public class GeoUtils {
 
     }
 
+    /**
+     * 示例：想要生成一个表到：tracer-admin-account
+     * @param dbTableName 表名 admin_system
+     * @param modelName 模块名admin
+     * @param functionName 功能名account
+     * @param project 总项目名 tracer
+     * @param superName 副项目名 用于查找生成路径 admin
+     */
         public static void getTable(String dbTableName,String modelName,String functionName,String project,String  superName) {
             String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
             String[] test2 = {"mapper","dto","rest","service"};
