@@ -24,6 +24,7 @@ import java.util.List;
  * 创建时间:   [${date(),"yyyy-MM-dd HH:mm:ss"}]
  * 版本:       [v1.0]
  */
+\@SuppressWarnings("ALL")
 \@RestController
 \@RequestMapping("/${data.lowerClassName}")
 public class ${data.className}Controller extends BaseController {
@@ -36,6 +37,7 @@ public class ${data.className}Controller extends BaseController {
 	 * \@param current 当前页数
 	 * \@return 分页数据
 	 */
+	 \@ApiOperation(value="获取分页数据",notes = "获取分页数据")
      \@GetMapping(value="/pageList")
     public Result pageList(Integer current){
         Page page = new Page();

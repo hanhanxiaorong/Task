@@ -31,6 +31,7 @@
         <module>tracer-starter-file</module>
         <module>tracer-starter-redis</module>
         <module>tracer-starter-socket</module>
+        <module>tracer-starter-ic</module>
 
     </modules>
 

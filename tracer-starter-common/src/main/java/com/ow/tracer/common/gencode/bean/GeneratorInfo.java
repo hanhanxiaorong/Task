@@ -18,6 +18,7 @@ public class GeneratorInfo {
 
     ///////////配置信息///////////
     private String tableName;
+
     /**作者*/
     private String author;
     /**说明*/
@@ -143,6 +144,8 @@ public class GeneratorInfo {
     public void setFunctionName(String functionName) {
         this.functionName = functionName;
     }
+
+
 
     @Override
     public String toString() {

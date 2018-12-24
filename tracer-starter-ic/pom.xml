@@ -9,17 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tracer-starter-shop</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>tracer-shop-web</module>
-        <module>tracer-shop-admin</module>
-    </modules>
-    <dependencies>
-    <dependency>
-        <groupId>com.ow</groupId>
-        <artifactId>tracer-starter-common</artifactId>
-        <version>1.0</version>
-    </dependency>
-    </dependencies>
+    <artifactId>tracer-starter-ic</artifactId>
+
 </project>

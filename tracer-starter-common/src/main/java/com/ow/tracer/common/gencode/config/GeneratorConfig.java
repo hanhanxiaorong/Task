@@ -22,6 +22,7 @@ public class GeneratorConfig {
     /**模板文件后缀*/
     private String templateFileSuffix;
 
+    private String vuePath;
     /**作者*/
     private String author;
     /**说明*/
@@ -145,5 +146,13 @@ public class GeneratorConfig {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public String getVuePath() {
+        return vuePath;
+    }
+
+    public void setVuePath(String vuePath) {
+        this.vuePath = vuePath;
     }
 }

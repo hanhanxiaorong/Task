@@ -161,10 +161,18 @@ public class GeneratorCode {
                     String relativelyPath=System.getProperty("user.dir");
                     outputPath=path+"/"+moudelName+"-mapper"+"/src/main/resources/mapper/${className}Mapper.xml";
                 }
-                System.out.println(outputPath);
+                if(outputPath.indexOf("vue")!=-1){
+
+                    outputPath=generatorConfig.getVuePath()+"/views/"+generatorConfig.getPackageName()+"/${className}/index.vue";
+                }
+                if(outputPath.indexOf("const")!=-1){
+                    outputPath=generatorConfig.getVuePath()+"/const/"+generatorConfig.getPackageName()+"/${className}/${className}TableOption.js";
+                }
+                if(outputPath.indexOf("api")!=-1){
+                    outputPath=generatorConfig.getVuePath()+"/api/"+generatorConfig.getPackageName()+"/${className}/${className}.js";
+                }
                 outputPath = replaceConfigVal(outputPath, generatorInfo);
                 File outFile = new File(outputPath);
-                System.out.println(outFile);
                 boolean mkdirs = FileUtil.mkdirs(outFile);
                 if (!mkdirs) {
                     throw new RuntimeException("无法创建目录：" + outputPath + "，请修改目录权限允许写入或换一个文件输出路径。");
@@ -390,6 +398,7 @@ public class GeneratorCode {
                         }
                     }
                     gInfo.setLowerClassName(WordUtil.initialLow(gInfo.getClassName()));
+
                     if (generatorConfig.getModel() == null) {
                         gInfo.setModel(gInfo.getLowerClassName());
                     } else {
