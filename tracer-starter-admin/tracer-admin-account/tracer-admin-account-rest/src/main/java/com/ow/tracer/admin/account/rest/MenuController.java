@@ -104,6 +104,7 @@ public class MenuController extends BaseController {
     @ApiImplicitParam(name="menu",value="菜单实体",required = true,dataType = "Menu",paramType ="path" )
     @PostMapping("/add")
     public Result add(@RequestBody Menu menu) {
+        menu.setSystemType("0");
         boolean  boo = menuService.insertMenu(menu);
         return Results.successWithData(boo, BaseEnums.SUCCESS.desc());
     }
