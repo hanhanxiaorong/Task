@@ -8,7 +8,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <artifactId>tracer-starter-ic</artifactId>
+        <modules>
+            <module>tracer-ic-group</module>
+            <module>tracer-ic-run</module>
 
+        </modules>
 </project>

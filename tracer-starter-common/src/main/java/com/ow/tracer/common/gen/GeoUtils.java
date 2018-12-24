@@ -25,7 +25,7 @@ public class GeoUtils {
              "group",
                 "tracer","ic",2
       );
-     getTable(vuePath,"ic_group","ic","user","tracer","ic");
+//     getTable(vuePath,"ic_group","ic","user","tracer","ic");
 
     }
 
