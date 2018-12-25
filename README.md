@@ -64,4 +64,4 @@ tracer
         auth项目下数据库地址，redis地址更改成你本地所有
         admin项目下数据库地址，redis地址更改成你本地所有
 ## 版权声明
-Tracer使用 [Apache License 2.0][] 协议.       
+[MIT](LICENSE "MIT")     
