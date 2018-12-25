@@ -56,10 +56,10 @@ public class GeoUtils {
             generatorConfig.setTemplateId("/${packageName}/"+test2[i]);
             generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+modelName+"/"+functionName+"/"+test2[i]);
             DatabaseConfig databaseConfig = new DatabaseConfig();
-            String dbName = "tracer";//数据库名
+            String dbName = "tracer-ic";//数据库名
             databaseConfig.setTablePrefix(prefix+"_%");
             databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/" + dbName + "?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
-            databaseConfig.setDbName("tracer-ic");//设置数据库名
+            databaseConfig.setDbName("dbName");//设置数据库名
             databaseConfig.setUsername("ruitu");
             databaseConfig.setPassword("ruI115tU");
             GeneratorConfigUtils.batchgencode(generatorConfig,databaseConfig);

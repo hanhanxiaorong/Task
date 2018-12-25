@@ -9,6 +9,7 @@ Tracer：基于Spring Boot、OAuth2.0开发基于Vue前后分离的开发平台�
 ## 项目技术
       Tracer，使用Spring boot、mybatis、mybatis plus、Spring security、spring security oauth2、Redis、Jwttoken、vue、avue等，
     后续随着项目的不断发展，会扩展以及应用更多。
+    
  ## 项目功能
  - 注册登录：账号密码模式、短信验证码模式、社交账号模式、口令模式
  - 单点登录：基于Srping security oAuth 提供单点登录接口，对外开放，方便其他系统登录
@@ -20,8 +21,10 @@ Tracer：基于Spring Boot、OAuth2.0开发基于Vue前后分离的开发平台�
  - 操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
  - 数据权限: 使用mybatis Plus对原查询做增强，业务代码不用控制，即可实现。
  - 消息中心：短信、邮件
- - 代码生成：后端代码的生成，前端代码目前未实现
- - 缓存管理：基于Redis 
+ - 代码生成：前后端代码生成，强大的代码生成组件
+ - 前后端分离：解放前端，专注与前端开发
+ 
+
  ### 模块
  ``` lua
 tracer
@@ -29,6 +32,8 @@ tracer
  ├── tracer-starter-auth -- 授权服务提供
  ├── tracer-starter-cache -- 系统缓存模块
  ├── tracer-starter-admin -- 业务后台系统
+ ├── tracer-starter-redis -- redis管理组件
+ ├── tracer-starter-file -- 文件管理组件 
  ```
  ### 安全考虑
  - 开发语言：系统采用Java 语言开发，具有卓越的通用性、高效性、平台移植性和安全性。
@@ -37,3 +42,26 @@ tracer
  - 安全编码：用户表单提交所有数据，在服务器端都进行安全编码，防止用户提交非法脚本及SQL注入获取敏感数据等，确保数据安全。
  - 密码加密：登录用户密码进行SHA1散列加密，此加密方法是不可逆的。保证密文泄露后的安全问题。
  - 强制访问：系统对所有管理端链接都进行用户身份权限验证，防止用户直接填写url进行访问。
+###技术选型
+    ● 核心框架：Spring boot + Spring Framework 
+    ● 安全框架：Spring security
+    ● 任务调度：Quartz
+    ● 持久层框架：MyBatis + MyBatis-Plus
+    ● 数据库连接池：Alibaba Druid
+    ● 缓存框架：Caffeine+Redis
+    ● 会话管理：Spring-Session
+    ● 日志管理：SLF4J、Log4j2
+    ● 前端框架：vue+avue+element
+## 启动说明
+    * 项目依赖Redis。
+    * 启动方法：
+    	 	TracerStarterAuthApplication.java
+    	 	TracerAdminRestApplication.java
+    * 测试环境打包命令：
+    	 clean package
+    	 clean package
+    * 配置文件修改：
+        auth项目下数据库地址，redis地址更改成你本地所有
+        admin项目下数据库地址，redis地址更改成你本地所有
+## 版权声明
+Tracer使用 [Apache License 2.0][] 协议.       
