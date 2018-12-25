@@ -75,7 +75,6 @@ public class RoleController extends BaseController {
     @ApiImplicitParam(name="id",value="角色ID",required = true,dataType = "String",paramType ="path" )
     @DeleteMapping("/{id}")
     private Result del(@PathVariable String id){
-        System.out.println(id);
         boolean  boo = iRoleService.delRoleById(id);
         return Results.successWithData(boo, BaseEnums.SUCCESS.desc());
     }

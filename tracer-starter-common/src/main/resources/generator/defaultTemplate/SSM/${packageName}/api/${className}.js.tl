@@ -7,7 +7,7 @@ import request from '\@/router/axios'
  */
 export function getPageList(query) {
     return request({
-        url: '/admin/${data.lowerClassName}/pageList',
+        url: '/${data.packageName}/${data.lowerClassName}/pageList',
         method: 'get',
         params: query
     })
@@ -18,7 +18,7 @@ export function getPageList(query) {
  */
 export function getAll() {
     return request({
-        url: '/admin/${data.lowerClassName}/allList' ,
+        url: '/${data.packageName}/${data.lowerClassName}/allList' ,
         method: 'get'
     })
 }
@@ -28,7 +28,7 @@ export function getAll() {
  */
 export function getObj(id) {
     return request({
-        url: '/admin/${data.lowerClassName}/' + id,
+        url: '/${data.packageName}/${data.lowerClassName}/' + id,
         method: 'get'
     })
 }
@@ -39,7 +39,7 @@ export function getObj(id) {
  */
 export function add(params) {
     return request({
-        url: '/admin/${data.lowerClassName}/add',
+        url: '/${data.packageName}/${data.lowerClassName}/add',
         method: 'post',
         data: params
     })
@@ -51,7 +51,7 @@ export function add(params) {
  */
 export function del(id) {
     return request({
-        url: '/admin/${data.lowerClassName}/' + id,
+        url: '/${data.packageName}/${data.lowerClassName}/' + id,
         method: 'delete'
     })
 }
@@ -62,7 +62,7 @@ export function del(id) {
  */
 export function edit(params) {
     return request({
-        url: '/admin/${data.lowerClassName}/edit',
+        url: '/${data.packageName}/${data.lowerClassName}/edit',
         method: 'put',
         data: params
     })

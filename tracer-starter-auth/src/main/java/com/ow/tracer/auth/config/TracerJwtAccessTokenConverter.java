@@ -40,7 +40,6 @@ public class TracerJwtAccessTokenConverter extends JwtAccessTokenConverter {
         representation.put("userName", userName);
         representation.put("userId", user.getId());
         representation.put("userDD", userName);
-        System.out.println("userId是："+user.getId());
         return representation;
     }
 

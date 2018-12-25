@@ -1,4 +1,4 @@
-export const ${data.className}Option = {
+export const ${data.lowerClassName}Option = {
     border: true,
     index: true,
     indexLabel: '序号',
@@ -36,7 +36,7 @@ export const ${data.className}Option = {
         prop:"${c.property}",
         width:"150",
        fixed: true,
-        @if("id"==(c.property)){
+        @if("id".isEmpty(c.property)){
             hide:true,
             visdiplay:false,
        @}

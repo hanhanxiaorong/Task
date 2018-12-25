@@ -14,6 +14,7 @@ import com.ow.tracer.common.util.Results;
 import com.ow.tracer.common.vo.UserVO;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,9 +37,11 @@ public class UserController extends BaseController {
     @Autowired
     private IUserService iUserService;
 
+    @Cacheable(key ="'cache_user_current'+#userVO.id",value = "userIdCache",cacheManager = "cacheManager")
     @RequestMapping(value = "/info",method = RequestMethod.GET)
     @ResponseBody
     public Result userInfo(UserVO userVO){
+        logger.info("get by id from db");
         QueryWrapper<User> ew = new QueryWrapper<User>();
         ew.eq("user_name",userVO.getUserName());
         UserInfo user = iUserService.getUserInfo(userVO);
@@ -56,9 +59,11 @@ public class UserController extends BaseController {
         logger.info("authentication:{}",authentication);
         return "order id : " + 12;
     }
+    @Cacheable(key ="'cache_user_allUser'+#userVO.id+#current",value = "user",cacheManager = "cacheManager")
     @GetMapping(value="/allUser")
     public Result allUser(Integer current,Integer size,UserVO userVO){
-        System.out.println(userVO.getDeptId());
+        logger.info("get by id from allUser db");
+
         Page page = new Page();
         page.setCurrent(current);
         page.setSize(size);

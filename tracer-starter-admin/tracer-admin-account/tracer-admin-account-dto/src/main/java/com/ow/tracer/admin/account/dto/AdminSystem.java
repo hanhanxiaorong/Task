@@ -12,10 +12,9 @@ import java.util.Date;
  */
  @SuppressWarnings("serial")
   @TableName("admin_system")
-public class AdminSystem extends BaseDTO<AdminSystem> {
+public class  AdminSystem extends BaseDTO<AdminSystem> {
 
-    /**名称*/
-    private String name;
+     private String name;
 
     /**系统路径*/
     private String path;

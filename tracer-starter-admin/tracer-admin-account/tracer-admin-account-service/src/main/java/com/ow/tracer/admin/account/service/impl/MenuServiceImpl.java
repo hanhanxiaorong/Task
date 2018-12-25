@@ -1,5 +1,6 @@
 package com.ow.tracer.admin.account.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ow.tracer.admin.account.dto.Menu;
 import com.ow.tracer.admin.account.dto.RoleMenu;
@@ -20,20 +21,19 @@ import java.util.List;
  * @Date: 18-9-25 21:46
  * @Description:
  */
-@CacheConfig(cacheNames = "menu")
+//@CacheConfig(cacheNames = "menu")
 @Service
 public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implements IMenuService {
-@Autowired
+    @Autowired
     MenuMapper sysMenuMapper;
 
     @Autowired
     IRoleMenuService roleMenuService;
 
     @Override
-    public List<MenuVO> findMenuByRoleName(String role,String systemType) {
-        return sysMenuMapper.findMenuByRoleName(role,systemType);
+    public List<MenuVO> findMenuByRoleName(String role, String systemType) {
+        return sysMenuMapper.findMenuByRoleName(role, systemType);
     }
-
 
     @Override
     public boolean insertMenu(Menu menu) {
@@ -42,6 +42,28 @@ public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implement
         roleMenu.setMenuId(menu.getId());
         roleMenu.setRoleId("1");
         roleMenuService.save(roleMenu);
+        return true;
+    }
+
+    @Override
+    public boolean removeByIdAndRoleMenu(String id) {
+        boolean success;
+        Menu menuContion = new Menu();
+        menuContion.setParentId(id);
+        List<Menu> remove = sysMenuMapper.selectList(new QueryWrapper<>(menuContion));
+        sysMenuMapper.deleteById(id);
+        RoleMenu contion = new RoleMenu();
+        contion.setMenuId(id);
+        roleMenuService.remove(new QueryWrapper<>(contion));
+        if (remove.size() >0) {
+            remove.forEach((menu -> {
+                        sysMenuMapper.deleteById(menu.getId());
+                        RoleMenu roleMenucontion = new RoleMenu();
+                        contion.setMenuId(menu.getId());
+                        roleMenuService.remove(new QueryWrapper<>(roleMenucontion));
+                    })
+            );
+        }
         return true;
     }
 }

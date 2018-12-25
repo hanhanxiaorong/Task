@@ -30,7 +30,6 @@ public abstract class AbsDeviceBsHandler <T extends BaseBody> implements DeviceB
         T bsBody = null;
         if (packet.getData() != null&&packet.getType()!=4) {
             jsonStr = new String(packet.getData(), Const.CHARSET);
-            System.out.println(jsonStr);
             bsBody = Json.toBean(jsonStr, bodyClass());
         }
         return handler(packet, bsBody, channelContext);

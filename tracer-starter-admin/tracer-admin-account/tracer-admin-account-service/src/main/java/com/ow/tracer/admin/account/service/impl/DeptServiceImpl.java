@@ -50,7 +50,6 @@ public class DeptServiceImpl extends BaseServiceImpl<DeptMapper, Dept> implement
      * @return
      */
     private List<DeptTree> getDeptTree(List<Dept> depts, String root) {
-        System.out.println( depts.size()+"部门查出来有");
         List<DeptTree> trees = new ArrayList<>();
         DeptTree node;
         for (Dept dept : depts) {

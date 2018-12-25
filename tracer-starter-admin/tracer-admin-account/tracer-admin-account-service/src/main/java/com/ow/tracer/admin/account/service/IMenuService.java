@@ -14,4 +14,5 @@ import java.util.List;
 public interface IMenuService extends BaseService<Menu> {
     List<MenuVO> findMenuByRoleName(String role,String systemType);
     boolean insertMenu (Menu menu);
+    boolean removeByIdAndRoleMenu(String id);
 }

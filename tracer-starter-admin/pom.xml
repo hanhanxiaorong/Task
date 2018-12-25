@@ -25,6 +25,12 @@
           <artifactId>tracer-starter-common</artifactId>
           <version>1.0</version>
       </dependency>
+      <dependency>
+          <groupId>com.ow</groupId>
+          <artifactId>tracer-starter-cache</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+          <type>jar</type>
+      </dependency>
   </dependencies>
 
 </project>

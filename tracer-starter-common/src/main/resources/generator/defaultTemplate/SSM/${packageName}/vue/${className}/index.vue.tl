@@ -38,7 +38,7 @@
 </template>
 
 <script>
-    import {getPageList,add,edit} from '\@/api/${data.packageName}/${data.className}/${data.className}';
+    import {getPageList,add,edit,del} from '\@/api/${data.packageName}/${data.className}/${data.className}';
     import { mapGetters } from "vuex";
     import { ${data.lowerClassName}Option } from "\@/const/${data.packageName}/${data.className}/${data.className}TableOption.js";
     export default {
@@ -157,12 +157,14 @@
                     type: "warning"
                 })
                     .then(() => {
-                        this.tableData.splice(index, 1);
-                        this.$message({
-                            showClose: true,
-                            message: "删除成功",
-                            type: "success"
-                        });
+                                   del(row.id).then(res => {
+                                                  this.handleList();
+                                                  this.$message({
+                                                      showClose: true,
+                                                      message: "删除成功",
+                                                      type: "success"
+                                                  });
+                                              })
                     })
                     .catch(() => { });
             },

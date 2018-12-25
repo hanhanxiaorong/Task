@@ -132,4 +132,15 @@ public class MenuController extends BaseController {
         }
         return  Results.successWithData(menuList,BaseEnums.SUCCESS.desc(),BaseEnums.SUCCESS.code());
     }
+    /**
+     * @param id 菜单编号
+     * @return 是否删除成功
+     */
+    @ApiOperation(value="根据ID删除菜单详情",notes = "在数据库中查询某个菜单数据并删除，并且将其所包含的权限移除")
+    @ApiImplicitParam(name="id",value="菜单ID",required = true,dataType = "String",paramType ="path" )
+    @DeleteMapping("/{id}")
+    public Result delMenu(@PathVariable String id){
+        boolean status = menuService.removeByIdAndRoleMenu(id);
+        return Results.successWithData(status,BaseEnums.SUCCESS.desc());
+    }
 }

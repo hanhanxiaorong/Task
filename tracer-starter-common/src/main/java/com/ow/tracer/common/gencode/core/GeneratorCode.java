@@ -147,7 +147,6 @@ public class GeneratorCode {
         for (int i = 0; i < generatorInfolist.size(); i++) {
             GeneratorInfo generatorInfo = generatorInfolist.get(i);
             moudelName="tracer"+"-"+generatorInfo.getPackageName()+"-"+generatorInfo.getFunctionName();//项目模块名
-            System.out.println(generatorInfo.getProjectName());
             Map valMap = new HashMap(1);
             valMap.put("data", generatorInfo);
             groupTemplate.setSharedVars(valMap);//设置模板共享变量

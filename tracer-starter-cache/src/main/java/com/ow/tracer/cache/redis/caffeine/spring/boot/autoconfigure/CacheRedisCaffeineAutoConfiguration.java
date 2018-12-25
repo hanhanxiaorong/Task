@@ -1,6 +1,7 @@
-package com.ow.tracer.cache;
-import com.ow.tracer.cache.listener.CacheMessageListener;
-import com.ow.tracer.cache.properties.RedisEhcacheProperties;
+package com.ow.tracer.cache.redis.caffeine.spring.boot.autoconfigure;
+
+import com.ow.tracer.cache.redis.caffeine.spring.boot.autoconfigure.support.CacheMessageListener;
+import com.ow.tracer.cache.redis.caffeine.spring.boot.autoconfigure.support.RedisCaffeineCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -14,31 +15,31 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
 /**
  * @auther: Easy
- * @date: 18-11-21 01:04
+ * @date: 18-12-25 23:41
  * @description:
  */
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)
-@EnableConfigurationProperties(RedisEhcacheProperties.class)
-public class CacheRedisEhcacheAutoConfiguration {
-
+@EnableConfigurationProperties(CacheRedisCaffeineProperties.class)
+public class CacheRedisCaffeineAutoConfiguration {
     @Autowired
-    private RedisEhcacheProperties redisEhcacheProperties;
+    private CacheRedisCaffeineProperties cacheRedisCaffeineProperties;
 
     @Bean
-    public RedisEhcacheCacheManager cacheManager(RedisTemplate<Object, Object> redisTemplate) {
-        System.out.println("执行了456456454");
-        return new RedisEhcacheCacheManager(redisEhcacheProperties, redisTemplate);
+    @ConditionalOnBean(RedisTemplate.class)
+    public RedisCaffeineCacheManager cacheManager(RedisTemplate<Object, Object> redisTemplate) {
+        return new RedisCaffeineCacheManager(cacheRedisCaffeineProperties, redisTemplate);
     }
 
     @Bean
-    @ConditionalOnBean(RedisEhcacheCacheManager.class)
     public RedisMessageListenerContainer redisMessageListenerContainer(RedisTemplate<Object, Object> redisTemplate,
-                                                                       RedisEhcacheCacheManager redisEhcacheCacheManager) {
+                                                                       RedisCaffeineCacheManager redisCaffeineCacheManager) {
         RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
         redisMessageListenerContainer.setConnectionFactory(redisTemplate.getConnectionFactory());
-        CacheMessageListener cacheMessageListener = new CacheMessageListener(redisTemplate, redisEhcacheCacheManager);
-        redisMessageListenerContainer.addMessageListener(cacheMessageListener, new ChannelTopic(redisEhcacheProperties.getRedis().getTopic()));
+        CacheMessageListener cacheMessageListener = new CacheMessageListener(redisTemplate, redisCaffeineCacheManager);
+        redisMessageListenerContainer.addMessageListener(cacheMessageListener, new ChannelTopic(cacheRedisCaffeineProperties.getRedis().getTopic()));
         return redisMessageListenerContainer;
     }
 }
+
+

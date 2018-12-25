@@ -18,7 +18,6 @@ public abstract class DeviceAbsAioHandler implements AioHandler {
 
     @Override
     public DeviceReadPacket decode(ByteBuffer byteBuffer, int limit, int position, int readableLength, ChannelContext channelContext) throws AioDecodeException {
-        System.out.println(Arrays.toString(byteBuffer.array()));
         //可读数据，小于头部的固定长度，直接返回null，这样tio框架会自动把本次收到的数据暂存起来，并和下次收到的数据组合起来
         DeviceReadPacket imPacket = new DeviceReadPacket();
         if (readableLength < DeviceReadPacket.HEADER_LENGHT) {
@@ -36,7 +35,6 @@ public abstract class DeviceAbsAioHandler implements AioHandler {
         }
        byte version = byteBuffer.get();
         int ip =    byteBuffer.getInt();
-        System.out.println(IPv4Util.intToIp(ip));
         byteBuffer.get(number);
         byte length  = byteBuffer.get();
         byte type= byteBuffer.get();

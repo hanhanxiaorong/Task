@@ -80,7 +80,6 @@ public class GeoUtils {
             String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
             String[] test2 = {"mapper","dto","rest","service","vue","api","const"};
             String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
-            System.out.println(path);
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setVuePath(vuePath);

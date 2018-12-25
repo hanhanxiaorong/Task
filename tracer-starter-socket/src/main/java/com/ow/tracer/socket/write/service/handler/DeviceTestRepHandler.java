@@ -50,7 +50,6 @@ public class DeviceTestRepHandler extends AbsDeviceBsHandler<DeviceTestReqBody> 
 
 	@Override
 	public Object handler(DeviceWritePacket packet, DeviceTestReqBody bsBody, ChannelContext channelContext) throws Exception {
-		System.out.println("心跳");
 		//心跳消息,啥也不用做
 		return null;
 	}

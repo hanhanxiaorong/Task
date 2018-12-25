@@ -172,8 +172,7 @@ public class IPv4Util {
                 byteStr.append("," + b);
             }
         }
-        System.out.println("IP: " + ipAddr + " ByInet --> byte[]: [ " + byteStr
-                + " ]");
+
 
 
         bytearr = IPv4Util.ipToBytesByReg(ipAddr);
