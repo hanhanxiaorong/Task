@@ -22,6 +22,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <xxl-rpc.version>1.2.1</xxl-rpc.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons.fileupload.version>1.3.1</commons.fileupload.version>
+        <commons.collections.version>3.2</commons.collections.version>
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <commons.codec.version>1.10</commons.codec.version>
+        <commons.lang3.version>3.6</commons.lang3.version>
+        <commons-exec.version>1.3</commons-exec.version>
+
+        <guava.version>23.0</guava.version>
+        <mysql.connector.version>8.0.12</mysql.connector.version>
+        <mp.version>3.0-RC1</mp.version>
+        <beetl.version>2.7.26</beetl.version>
+        <freemarker.version>2.3.28</freemarker.version>
+        <groovy-all.version>2.5.3</groovy-all.version>
+        <quartz.version>2.3.0</quartz.version>
+        <jackson.version>2.9.7</jackson.version>
+        <jetty-server.version>9.2.26.v20180806</jetty-server.version>
     </properties>
     <modules>
         <module>tracer-starter-admin</module>
@@ -32,6 +52,7 @@
         <module>tracer-starter-redis</module>
         <module>tracer-starter-socket</module>
         <module>tracer-starter-ic</module>
+        <module>tracer-starter-job</module>
 
     </modules>
 

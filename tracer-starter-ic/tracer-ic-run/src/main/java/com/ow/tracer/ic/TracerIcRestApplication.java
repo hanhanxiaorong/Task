@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableCaching
 @ComponentScan(basePackages = {
-        "com.ow.tracer.common.config", "com.ow.tracer.common.resolver","com.ow.tracer.ic"})
+        "com.ow.tracer.common.config", "com.ow.tracer.admin.config.resolver","com.ow.tracer.ic"})
 @MapperScan("com.ow.tracer.ic.group.mapper*")
 public class TracerIcRestApplication {
 
