@@ -42,6 +42,8 @@ tracer
  ├── tracer-starter-admin -- 业务后台系统
  ├── tracer-starter-redis -- redis管理组件
  ├── tracer-starter-file -- 文件管理组件 
+ ├── tracer-starter-job -- 任务管理组件 
+ ├── tracer-starter-socket -- 通讯组件  
  ```
  ### 安全考虑
  - 开发语言：系统采用Java 语言开发，具有卓越的通用性、高效性、平台移植性和安全性。
@@ -69,8 +71,8 @@ tracer
     	 clean package
     	 clean package
     * 配置文件修改：
-        auth项目下数据库地址，redis地址更改成你本地所有
-        admin项目下数据库地址，redis地址更改成你本地所有
+        auth项目下数据库地址，redis地址更改成本地所有
+        admin项目下数据库地址，redis地址更改成本地所有
 ## 友情感谢
 - [ xxl-job](https://gitee.com/xuxueli0323/xxl-job "一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。")
 - [mybatis-plus](https://gitee.com/baomidou/mybatis-plus "mybatis 增强工具包，简化 CRUD 操作")
