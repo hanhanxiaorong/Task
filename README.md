@@ -72,12 +72,12 @@ tracer
         auth项目下数据库地址，redis地址更改成你本地所有
         admin项目下数据库地址，redis地址更改成你本地所有
 ## 友情感谢
-    ----|------|----
-    xxl-job| 一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。  | [https://gitee.com/xuxueli0323/xxl-job](https://gitee.com/xuxueli0323/xxl-job)
-    mybatis-plus| mybatis 增强工具包，简化 CRUD 操作  | [https://gitee.com/baomidou/mybatis-plus](https://gitee.com/baomidou/mybatis-plus)
-    avue| 基于Avue、Vue、Element-ui实现的一套后台管理系统快速开发模板  | [https://gitee.com/smallweigit/avue](https://gitee.com/smallweigit/avue)
-    pig| 基于Spring Cloud、OAuth2.0、Vue的前后端分离的系统，在我开发Tracer时遇到思路问题就有参考PIG  | [https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
-    t-io| t-io是基于aio(nio2)的网络编程框架，和netty属于同类，但t-io更注重开发一线工程师的感受，提供了大量和业务相关的API，tracer的物联网方案基于t-io | [https://gitee.com/tywo45/t-io](https://gitee.com/tywo45/t-io)
+- [ xxl-job](https://gitee.com/xuxueli0323/xxl-job "一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。")
+- [mybatis-plus](https://gitee.com/baomidou/mybatis-plus "mybatis 增强工具包，简化 CRUD 操作")
+- [avue](https://gitee.com/smallweigit/avue "基于Avue、Vue、Element-ui实现的一套后台管理系统快速开发模板")
+- [pig](https://gitee.com/log4j/pig "基于Spring Cloud、OAuth2.0、Vue的前后端分离的系统，在我开发Tracer时遇到思路问题就有参考PIG")
+- [t-io](https://gitee.com/log4j/pig "t-io是基于aio(nio2)的网络编程框架，和netty属于同类，但t-io更注重开发一线工程师的感受，提供了大量和业务相关的API，tracer的物联网方案基于t-io")
+
 ## 参与开发  
     首先谢谢大家支持，如果你希望参与开发，欢迎通过Github上fork本项目，并Pull Request您的commit。
 ## 版权声明
