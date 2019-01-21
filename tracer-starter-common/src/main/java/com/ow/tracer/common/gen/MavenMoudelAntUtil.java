@@ -111,7 +111,7 @@ public class MavenMoudelAntUtil {
      */
     private  boolean isJavaFileDir(String sourceDirPath){
 
-        String regex = sourceBasePath1.replaceAll("\\\\","\\\\\\\\") + "\\\\(rest|config|service|model|mapper)\\\\src\\\\main\\\\java";
+        String regex = sourceBasePath1.replaceAll("\\\\","\\\\\\\\") + "\\\\(rest|config|service|model|mapper|web)\\\\src\\\\main\\\\java";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(sourceDirPath);
         if (m.find()) {
@@ -123,6 +123,7 @@ public class MavenMoudelAntUtil {
     private String replacedSourceDirPath(String sourceDirPath){
         String result = sourceDirPath
                 .replace(sourceBasePath  + "\\rest", targetBasePath + "\\" + artifactId + "-rest")
+                .replace(sourceBasePath  + "\\web", targetBasePath + "\\" + artifactId + "-web")
                 .replace(sourceBasePath  + "\\config", targetBasePath + "\\" + artifactId + "-config")
                 .replace(sourceBasePath  + "\\service", targetBasePath + "\\" + artifactId + "-service")
                 .replace(sourceBasePath  + "\\dto", targetBasePath + "\\" + artifactId + "-dto")

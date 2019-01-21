@@ -79,6 +79,7 @@ public class FileGeneration {
 
         String result = sourceDirPath
                 .replace(sourceBasePath + "/rest", targetBasePath + "/" + ARTIFACT_ID +  "-rest")
+                .replace(sourceBasePath + "/web", targetBasePath + "/" + ARTIFACT_ID +  "-web")
                 .replace(sourceBasePath + "/config", targetBasePath + "/" + ARTIFACT_ID + "-config")
                 .replace(sourceBasePath + "/service", targetBasePath + "/" + ARTIFACT_ID + "-service")
                 .replace(sourceBasePath + "/dto", targetBasePath + "/" + ARTIFACT_ID + "-dto")
@@ -268,7 +269,7 @@ public class FileGeneration {
      */
     private  boolean isJavaFileDir(String sourceDirPath){
 
-        String regex = sourceBasePath.replaceAll("\\\\","\\\\\\\\") + "\\\\(rest|config|service|dto|mapper|vue|const|api)\\\\src\\\\main\\\\java";
+        String regex = sourceBasePath.replaceAll("\\\\","\\\\\\\\") + "\\\\(rest|config|service|dto|web|mapper|vue|const|api)\\\\src\\\\main\\\\java";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(sourceDirPath);
         if (m.find()) {

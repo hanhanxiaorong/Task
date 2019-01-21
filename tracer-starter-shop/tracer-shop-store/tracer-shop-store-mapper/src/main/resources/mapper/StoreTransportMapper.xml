@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.store.mapper.StoreTransportMapper">
+
+	<!-- 字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`transport_fee_type`,
+		`freight_init_weight`,
+		`transport_fee`,
+		`store_id`,
+		`beyond`,
+		`beyond_fee`,
+		`area_id`,
+		`freight_type`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+
+
+</mapper>

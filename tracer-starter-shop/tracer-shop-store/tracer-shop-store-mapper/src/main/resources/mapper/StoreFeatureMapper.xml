@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.store.mapper.StoreFeatureMapper">
+
+	<!-- 店铺分类规格表
+1:n:n 关系字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`feature_name`,
+		`user_id`,
+		`type`,
+		`level`,
+		`approve_status`,
+		`p_id`,
+		`class_id`,
+		`parent_id`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+
+
+</mapper>

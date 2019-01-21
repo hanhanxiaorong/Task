@@ -16,6 +16,7 @@ public class JarDependencyVersion {
         jarVersionMap.put("${artifactId-mapper}", "0.0.1.0-SNAPSHOT");
         jarVersionMap.put("${artifactId-model}", "0.0.1.0-SNAPSHOT");
         jarVersionMap.put("${artifactId-rest}", "0.0.1.0-SNAPSHOT");
+        jarVersionMap.put("${artifactId-web}", "0.0.1.0-SNAPSHOT");
         jarVersionMap.put("${artifactId-service}", "0.0.1.0-SNAPSHOT");
     }
 }

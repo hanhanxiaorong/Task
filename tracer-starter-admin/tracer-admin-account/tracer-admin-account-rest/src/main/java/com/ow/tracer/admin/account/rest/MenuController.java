@@ -64,9 +64,7 @@ public class MenuController extends BaseController {
         list.forEach(menu -> {
             menuTreeList.add(new MenuTree(menu));
         });
-        CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
-
-        return Results.successWithData(TreeUtil.bulid(menuTreeList, "-1"), BaseEnums.SUCCESS.desc());
+         return Results.successWithData(TreeUtil.bulid(menuTreeList, "-1"), BaseEnums.SUCCESS.desc());
     }
     @ApiOperation(value="获取符合自身权限的菜单",notes ="查询数据库菜单集合")
     @GetMapping(value="permessionTree")
@@ -79,7 +77,6 @@ public class MenuController extends BaseController {
             menuTreeList.add(new MenuTree(menu));
         });
         CollUtil.sort(menuTreeList, Comparator.comparingInt(MenuTree::getSort));
-
         return Results.successWithData(TreeUtil.bulid(menuTreeList, "-1"), BaseEnums.SUCCESS.desc());
     }
 
@@ -117,7 +114,6 @@ public class MenuController extends BaseController {
     }
     /**
      * 返回角色的菜单集合
-     *
      * @param roleName 角色名称
      * @return 属性集合
      */

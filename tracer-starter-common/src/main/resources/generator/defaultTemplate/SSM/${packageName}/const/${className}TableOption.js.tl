@@ -36,10 +36,6 @@ export const ${data.lowerClassName}Option = {
         prop:"${c.property}",
         width:"150",
        fixed: true,
-        @if("id".isEmpty(c.property)){
-            hide:true,
-            visdiplay:false,
-       @}
             rules: [{
                    required: true,
                    message: "${c.simpleColumnComment}",

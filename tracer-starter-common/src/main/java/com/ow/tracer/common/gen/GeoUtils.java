@@ -20,10 +20,10 @@ public class GeoUtils {
     public static void main(String[] args) {
     String vuePath ="/home/easy/WebstormProjects/Tracer-avue-ui/src/";
     getTables(vuePath,"com.ow",
-             "ic_g",
-             "ic",
-             "group",
-                "tracer","ic",2
+             "store",
+             "shop",
+             "store",
+                "tracer","shop",2
       );
 //     getTable(vuePath,"ic_group","ic","user","tracer","ic");
 
@@ -42,7 +42,7 @@ public class GeoUtils {
         String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
         //创建文件夹
         FileGeneration.CreateFIle(groupId,moudelName,superName,type);
-        String[] test2 = {"mapper","dto","rest","service","vue","api","const"};
+        String[] test2 = {"mapper","dto","rest","web","service","vue","api","const"};
         String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
 
         for(int i=0;i<test2.length;i++){
@@ -56,10 +56,10 @@ public class GeoUtils {
             generatorConfig.setTemplateId("/${packageName}/"+test2[i]);
             generatorConfig.setOutputPath(path+"/"+moudelName+"-"+test2[i]+"/src/main/java/com/ow/tracer/"+modelName+"/"+functionName+"/"+test2[i]);
             DatabaseConfig databaseConfig = new DatabaseConfig();
-            String dbName = "tracer-ic";//数据库名
+            String dbName = "tracer-shop";//数据库名
             databaseConfig.setTablePrefix(prefix+"_%");
             databaseConfig.setDbUrl("jdbc:mysql://60.208.57.115:10506/" + dbName + "?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&&useSSL=false");
-            databaseConfig.setDbName("dbName");//设置数据库名
+            databaseConfig.setDbName(dbName);//设置数据库名
             databaseConfig.setUsername("ruitu");
             databaseConfig.setPassword("ruI115tU");
             GeneratorConfigUtils.batchgencode(generatorConfig,databaseConfig);
@@ -78,7 +78,7 @@ public class GeoUtils {
      */
         public static void getTable(String vuePath,String dbTableName,String modelName,String functionName,String project,String  superName) {
             String  moudelName= project.toLowerCase()+"-"+modelName+"-"+functionName;
-            String[] test2 = {"mapper","dto","rest","service","vue","api","const"};
+            String[] test2 = {"mapper","dto","rest","web","service","vue","api","const"};
             String path= GeoUtils.getPath("^(?!.*"+superName+").*$",moudelName);
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();

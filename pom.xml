@@ -36,7 +36,7 @@
         <guava.version>23.0</guava.version>
         <mysql.connector.version>8.0.12</mysql.connector.version>
         <mp.version>3.0-RC1</mp.version>
-        <beetl.version>2.7.26</beetl.version>
+        <beetl.version>2.9.6</beetl.version>
         <freemarker.version>2.3.28</freemarker.version>
         <groovy-all.version>2.5.3</groovy-all.version>
         <quartz.version>2.3.0</quartz.version>
@@ -53,6 +53,7 @@
         <module>tracer-starter-socket</module>
         <module>tracer-starter-ic</module>
         <module>tracer-starter-job</module>
+        <module>tracer-starter-shop</module>
 
     </modules>
 

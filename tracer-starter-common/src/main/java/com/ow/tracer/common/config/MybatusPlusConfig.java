@@ -91,15 +91,15 @@ public class MybatusPlusConfig {
     public ISqlInjector sqlInjector(){
         return new LogicSqlInjector();
     }
-//    /**
-//     * SQL执行效率插件
-//     */
-//    @Bean
-//    public PerformanceInterceptor performanceInterceptor() {
-//
-//
-//        return new PerformanceInterceptor();
-//    }
+    /**
+     * SQL执行效率插件
+     */
+    @Bean
+    public PerformanceInterceptor performanceInterceptor() {
+
+
+        return new PerformanceInterceptor();
+    }
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();

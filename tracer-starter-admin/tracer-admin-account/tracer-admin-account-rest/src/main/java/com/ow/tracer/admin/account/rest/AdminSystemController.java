@@ -30,7 +30,6 @@ public class AdminSystemController extends BaseController {
     @Autowired
     private IAdminSystemService adminSystemService;
     private Logger logger = LoggerFactory.getLogger(AdminSystemController.class);
-
     /**
 	 * 分页 PAGE
 	 * @param current 当前页数
@@ -44,22 +43,20 @@ public class AdminSystemController extends BaseController {
         IPage<AdminSystem> adminSystemIPage = adminSystemService.page(page,null);
         return Results.successWithData(adminSystemIPage , BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }
-        /**
-    	 * 全部list
-    	 * @return List实体集合
-    	 */
+            /**
+             * 全部list
+             * @return List实体集合
+             */
     @GetMapping(value="/allList")
     public Result allList(){
         List<AdminSystem> adminSystemList =  adminSystemService.list(new QueryWrapper<>());
         return Results.successWithData(adminSystemList, BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }
-
     /**
      * 通过ID查询
      * @param id ID
      * @return Dept
      */
-
     @GetMapping("/{id}")
     public Result get(@PathVariable String id) {
         AdminSystem adminSystem = new AdminSystem ();
