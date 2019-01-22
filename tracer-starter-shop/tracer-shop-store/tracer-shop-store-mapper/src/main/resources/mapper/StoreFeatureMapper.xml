@@ -16,7 +16,7 @@
 		`approve_status`,
 		`p_id`,
 		`class_id`,
-		`parent_id`
+		`parent_id`,
 	'del_flag',
       'create_date',
       'create_by',

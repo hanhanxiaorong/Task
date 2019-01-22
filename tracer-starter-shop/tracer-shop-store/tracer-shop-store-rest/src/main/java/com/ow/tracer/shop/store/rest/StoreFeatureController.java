@@ -20,14 +20,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * 类描述:     [店铺分类规格表
-1:n:n 关系控制器]
+    1:n:n 关系控制器]
  * 创建人:     [江雪立]
  * 创建时间:   [2019-01-09 18:27:32]
  * 版本:       [v1.0]
@@ -71,7 +68,7 @@ public class StoreFeatureController extends BaseController {
         return  Results.successWithData(TreeUtil.bulid(trees, "3"), BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
     }
     /**
-     * 审批树表格
+     * 审批树,查询树数据。
      * @param current 当前页数
      * @return 分页数据
      */
@@ -84,7 +81,20 @@ public class StoreFeatureController extends BaseController {
             CurrencyTree currencyTree = new CurrencyTree(storeFeature);
             trees.add(currencyTree);
         });
-        return  Results.successWithData(TreeUtil.bulid(trees, "-1"), BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
+        List<CurrencyTree>  treeList=TreeUtil.bulid(trees, "-1");
+        if(1<=treeList.size()){
+            Map map = new HashMap();
+            map.put(0,treeList);
+            CurrencyTree currencyTree = treeList.get(0);
+            StoreFeature contion = new StoreFeature();
+            Page page = new Page();
+            page.setCurrent(1);
+            page.setSize(20);
+            IPage<StoreFeature> storeFeatureIPage = storeFeatureService.page(page,new QueryWrapper<StoreFeature>().like("p_id",currencyTree.getId()).eq("level",3));
+            map.put(1,storeFeatureIPage);
+            return  Results.successWithData(map,BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
+        }
+        return  Results.failure();
 
     }
         /**
@@ -112,7 +122,7 @@ public class StoreFeatureController extends BaseController {
 
     /**
      * 根据ID删除店铺分类规格表
-1:n:n 关系
+     1:n:n 关系
      * @param id 编号
      * @return success/false
      */
@@ -169,5 +179,18 @@ public class StoreFeatureController extends BaseController {
         boolean boo = storeFeatureService.updateById( storeFeature);
         return  Results.successWithData(boo,BaseEnums.SUCCESS.desc());
     }
-
+    /**
+     * 分页 查询树节点下的规格值
+     * @param current 当前页数
+     * @return 分页数据
+     */
+    @ApiOperation(value="获取分页数据",notes = "获取分页数据")
+    @GetMapping(value="/featurePage")
+    public Result featurePage(Integer current,String id){
+        Page page = new Page();
+        page.setCurrent(current);
+        page.setSize(20);
+        IPage<StoreFeature> storeFeatureIPage = storeFeatureService.page(page,new QueryWrapper<StoreFeature>().like("p_id",id).eq("level",3));
+        return Results.successWithData(storeFeatureIPage , BaseEnums.SUCCESS.code(), BaseEnums.SUCCESS.desc());
+    }
 }

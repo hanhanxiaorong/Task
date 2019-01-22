@@ -24,14 +24,7 @@ import java.util.Map;
  */
 public class BaseDTO <T extends Model> extends Model<T> {
 
-    public static final String FIELD_OPERATE = "operate";
-    public static final String FIELD_OBJECT_VERSION_NUMBER = "versionNumber";
-    public static final String FIELD_CREATE_BY = "createBy";
-    public static final String FIELD_CREATOR = "creator";
-    public static final String FIELD_CREATE_DATE = "createDate";
-    public static final String FIELD_UPDATE_BY = "updateBy";
-    public static final String FIELD_UPDATER = "updater";
-    public static final String FIELD_UPDATE_DATE = "updateDate";
+
 
 
     /**
