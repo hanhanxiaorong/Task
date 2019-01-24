@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.group.mapper.ShopAlbumMapper">
+
+	<!-- 相册表字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`alblum_name`,
+		`alblum_info`,
+		`album_default`,
+		`album_sequence`,
+		`user_id`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+
+
+</mapper>

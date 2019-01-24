@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.group.mapper.ShopClassMapper">
+
+	<!-- 分类信息表字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`class_name`,
+		`display`,
+		`level`,
+		`recommend`,
+		`sequence`,
+		`parent_id`,
+		`seo_description`,
+		`seo_keywords`,
+		`icon_class`,
+		`p_id`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+
+
+</mapper>
