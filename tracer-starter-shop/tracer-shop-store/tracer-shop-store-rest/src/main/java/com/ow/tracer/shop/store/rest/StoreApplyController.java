@@ -91,6 +91,7 @@ public class StoreApplyController extends BaseController {
 
        @PostMapping("/add")
        public Result add(@RequestBody StoreApply  storeApply ) {
+
            boolean  boo = storeApplyService.save(storeApply);
            return Results.successWithData(boo, BaseEnums.SUCCESS.desc());
        }

@@ -6,6 +6,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.IdcardUtil;
 import com.ow.tracer.common.base.BaseController;
+import com.ow.tracer.common.base.FileResult;
 import com.ow.tracer.common.base.Result;
 import com.ow.tracer.common.util.Results;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class FileUploadController  extends BaseController {
      * 有第三方传入，根据项目名-模块名-文件类型-日期进行分类
      */
     @PostMapping(value="/fileUplod")
-    public Result fileUplod(@RequestParam ("fileName") MultipartFile file,String projectName,String modelName) throws  Exception{
+    public Result fileUplod(MultipartFile file,String projectName,String modelName) throws  Exception{
         if(file.isEmpty()){
             return Results.failure("文件为空，请核查后在进行上传");
         }
@@ -54,10 +55,13 @@ public class FileUploadController  extends BaseController {
                 .getCodeSource().getLocation().getFile();
         //创建文件
         File  dest = new File(projectName+"/"+modelName+"/"+dateTime.getYear()+dateTime.getMonth()+dateTime.getDay()+"/"+fileName+"."+prefix);
+        String url=projectName+"/"+modelName+"/"+dateTime.getYear()+dateTime.getMonth()+dateTime.getDay()+"/"+fileName+"."+prefix;
         //将MultipartFile转为File
         FileUtil.writeFromStream(file.getInputStream(),dest);
         //创建文件
         FileUtil.touch(dest);
-        return  Results.success("图片上传成功");
+        url="http://127.0.0.1:80/"+url;
+        //用于上传文件用的返回类，集成了基础返回类，传值为图片名称（自定义），和编辑好的图片路径（同本方法内的url）
+        return  new FileResult("head", url);
     }
 }

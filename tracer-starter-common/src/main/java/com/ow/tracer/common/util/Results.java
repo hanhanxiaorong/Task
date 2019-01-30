@@ -1,5 +1,6 @@
 package com.ow.tracer.common.util;
 
+import com.ow.tracer.common.base.FileResult;
 import com.ow.tracer.common.base.Result;
 
 /**
@@ -218,5 +219,15 @@ public class Results {
     public static Result failureWithData(Object data, String code, String msg) {
         return new Result(false, code, msg, data);
     }
-
+    /**
+     * 功能描述: 文件上传失败
+     *
+     * @param: msg
+     * @return: 返回成功带描述
+     * @auther: easy
+     * @date: 18-9-6 上午1:33
+     */
+    public static FileResult fileSuccess(String label,String url) {
+        return new FileResult(label, url);
+    }
 }

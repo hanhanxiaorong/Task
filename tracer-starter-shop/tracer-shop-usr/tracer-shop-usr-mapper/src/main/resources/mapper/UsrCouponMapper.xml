@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.usr.mapper.UsrCouponMapper">
+
+	<!-- 字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`store_id`,
+		`user_id`,
+		`coupon_id`,
+		`start_time`,
+		`end_time`,
+		`status`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+	<!-- 字段与Model映射 -->
+	<resultMap id="UsrCouponMap" type="com.ow.tracer.shop.usr.dto.UsrCoupon">
+		<result column="store_id" property="storeId"/>
+		<result column="user_id" property="userId"/>
+		<result column="coupon_id" property="couponId"/>
+		<result column="start_time" property="startTime"/>
+		<result column="end_time" property="endTime"/>
+		<result column="status" property="status"/>
+		<result column="user_name" property="userName"></result>
+		<result column="name" property="storeName"></result>
+		<result column="title" property="title"></result>
+		<result column="type" property="type"></result>
+		<result column="minfee" property="minfee"></result>
+		<result column="proportion" property="proportion"></result>
+		<result column="price" property="price"></result>
+		<result column="validity" property="validity"></result>
+		<result column="minfee" property="minfee"></result>
+		<result column="status" property="couponStatus"></result>
+	</resultMap>
+
+	<!--根据用户id查询优惠券列表-->
+	<select id="listByUserId" resultType="UsrCoupon">
+		select 	store_id,user_id,coupon_id,start_time,end_time,status
+		from usr_coupon
+		where 1=1
+		and user_id=#{userId}
+	</select>
+</mapper>

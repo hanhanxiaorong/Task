@@ -22,7 +22,7 @@
           <el-button type="danger"
                      icon="el-icon-delete"
                      size="small"
-                     \@click.stop="handleEdit(scope.row,scope.index)">删除</el-button>
+                     \@click.stop="handleDel(scope.row,scope.index)">删除</el-button>
           <el-button type="primary"
                      icon="el-icon-view"
                      size="small"
@@ -135,6 +135,7 @@
              **/
             handleSave (row, done) {
                 add(row).then(res => {
+                    this.page.currentPage=1;
                     this.handleList();
                     this.$message({
                         showClose: true,
@@ -151,13 +152,14 @@
              *
              **/
             handleDel (row, index) {
-                this.$confirm(`是否确认删除序号为\${row.name}`, "提示", {
+                this.$confirm(`是否确认删除序号为\${row.$index+1}的数据`, "提示", {
                     confirmButtonText: "确定",
                     cancelButtonText: "取消",
                     type: "warning"
                 })
                     .then(() => {
                                    del(row.id).then(res => {
+                                                  this.page.currentPage=1;
                                                   this.handleList();
                                                   this.$message({
                                                       showClose: true,
@@ -177,6 +179,7 @@
              **/
             handleUpdate (row, index, done) {
                 edit(row).then(res => {
+                    this.page.currentPage=1;
                     this.handleList();
                     this.$message({
                         showClose: true,

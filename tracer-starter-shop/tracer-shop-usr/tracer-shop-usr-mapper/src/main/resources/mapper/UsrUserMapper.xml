@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ow.tracer.shop.usr.mapper.UsrUserMapper">
+
+	<!-- 字段与Model映射 -->
+
+
+	<sql id="Base_Column_List">
+		`qq`,
+		`wechat`,
+		`address`,
+		`available_balance`,
+		`birthday`,
+		`email`,
+		`freeze_blance`,
+		`gold`,
+		`integral`,
+		`mobile`,
+		`password`,
+		`sex`,
+		`user_name`,
+		`user_credit`,
+		`photo_id`,
+		`store_id`,
+		`qq_openid`,
+		`wx_openid`,
+		`area_id`
+	'del_flag',
+      'create_date',
+      'create_by',
+      'update_by',
+      'update_date',
+       'version_number',
+       'enabled'
+	</sql>
+	<!-- 字段与Model映射 -->
+	<resultMap id="UsrUserMap" type="com.ow.tracer.shop.usr.dto.UsrUser">
+		<result column="qq" property="qq"/>
+		<result column="wechat" property="wechat"/>
+		<result column="address" property="address"/>
+		<result column="available_balance" property="availableBalance"/>
+		<result column="birthday" property="birthday"/>
+		<result column="email" property="email"/>
+		<result column="freeze_blance" property="freezeBlance"/>
+		<result column="gold" property="gold"/>
+		<result column="integral" property="integral"/>
+		<result column="mobile" property="mobile"/>
+		<result column="password" property="password"/>
+		<result column="sex" property="sex"/>
+		<result column="user_name" property="userName"/>
+		<result column="photo_id" property="photoId"/>
+		<result column="store_id" property="storeId"/>
+		<result column="qq_openid" property="qqOpenid"/>
+		<result column="wx_openid" property="wxOpenid"/>
+		<result column="area_id" property="areaId"/>
+		<result column="true_name" property="trueName"/>
+		<result column="id_number" property="idNumber"/>
+		<result column="path" property="path"/>
+	</resultMap>
+
+	<select id="countByMap" resultType="UsrUser">
+		select count(id)
+		from usr_user
+		where 1=1
+		<if test="qq!=null">
+			and qq=#{qq}
+		</if>
+		<if test="wechat!=null">
+			  and wechat=#{wechat}
+		</if>
+		<if test="mobile!=null">
+			mobile=#{mobile}
+		</if>
+		<if test="email!=null">
+			email=#{email}
+		</if>
+
+	</select>
+
+
+</mapper>

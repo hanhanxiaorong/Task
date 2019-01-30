@@ -15,6 +15,15 @@
         tracer-shop-store
     </module>
     <module>
+        tracer-shop-coupon
+    </module>
+    <module>
+        tracer-shop-usr
+    </module>
+    <module>
+        tracer-shop-web-run
+    </module>
+    <module>
         tracer-shop-shop
     </module>
 
