@@ -18,11 +18,11 @@ import java.util.regex.Pattern;
  */
 public class GeoUtils {
     public static void main(String[] args) {
-    String vuePath ="/home/easy/WebstormProjects/Tracer-avue-ui/src/";
+    String vuePath ="/home/becky/WebstormProjects/Tracer-avue-ui/src/";
     getTables(vuePath,"com.ow",
-             "store",
+             "order",
              "shop",
-             "store",
+             "order",
                 "tracer","shop",2
       );
 //     getTable(vuePath,"ic_group","ic","user","tracer","ic");
@@ -48,7 +48,7 @@ public class GeoUtils {
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setVuePath(vuePath);
-            generatorConfig.setAuthor("江雪立");
+            generatorConfig.setAuthor("becky");
             generatorConfig.setPackageName(modelName);
             generatorConfig.setFunctionName(functionName);
             generatorConfig.setProjectName(project);
@@ -83,7 +83,7 @@ public class GeoUtils {
         for(int i=0;i<test2.length;i++){
             GeneratorConfig generatorConfig = new GeneratorConfig();
             generatorConfig.setVuePath(vuePath);
-            generatorConfig.setAuthor("江雪立");
+            generatorConfig.setAuthor("becky");
             generatorConfig.setPackageName(modelName);
             generatorConfig.setFunctionName(functionName);
             generatorConfig.setProjectName(project);
